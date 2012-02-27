@@ -1,9 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>marschall.github.com</title>
-</head>
-<body>
-  <h1>marschall.github.com</h1>
-</body>
-</html>
+---
+layout: default
+title: Philippe Marschall
+---
+
+<h2>Blog Posts</h2>
+<ul>
+  {% for post in site.posts %}
+    <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>
+
+<h2>Open Source Projects</h2>
+<ul class="posts">
+  <li><a href="http://marketplace.eclipse.org/content/jsdt-jquery">JSDT jQuery</a> A jQuery plugin for Eclipse.</li>
+</ul>
+
