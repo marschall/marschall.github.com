@@ -3,10 +3,24 @@
 <head>
    <title>{{ page.title }}</title>
    <meta name="author" content="Philippe Marschall" />
+   <meta name="generator" content="Jekyll" />
+   <meta name="robots" content="index,follow" />
+   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css" />
    <link rel="stylesheet" href="/bootstrap/css/docs.css" type="text/css" />
    <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css" type="text/css" />
+
+   <!-- meta links -->
+   <link rel="top" href="http://marschall.github.com" />
+   {% if page.next.url & page.next.published %}
+     <link rel="next" href="{{page.next.url}}" title="{{page.next.title}}" />
+   {% endif %}
+
+   {% if page.previous.url %}
+     <link rel="prev" href="{{page.previous.url}}" title="{{page.previous.title}}" />
+   {% endif %}
+
    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
 </head>
 <body data-spy="scroll" data-target=".subnav" data-offset="50">
