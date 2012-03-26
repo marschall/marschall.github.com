@@ -16,7 +16,7 @@ First you have to break the URL into subcomponents. If you treat an URL as an op
 
 Translate to Octets
 -------------------
-This is the step that most often gets ignored or done wrong. You cannot directly encode a character but only bytes aka octets. This means you'll first have to find the right encoding. So which one is it? <a href="http://www.ietf.org/rfc/rfc1738.txt">RFC 1738</a> assumes you'll only use US-ASCII, <a href="http://www.rfc-editor.org/rfc/rfc2396.txt">RFC 2396</a> says you're free to use whatever you want which probably often was either ISO-8859-1 or CP1251 (which are not the same BTW) and <a href="http://www.rfc-editor.org/rfc/rfc3986.txt">RFC 3986</a> says UTF-8. What now? Use whatever you server uses to decode the GET parameters. This is often the same as the page encoding but not always.
+This is the step that most often gets ignored or done wrong. You cannot directly encode a character but only bytes aka octets. This means you'll first have to find the right encoding. So which one is it? <a href="http://www.ietf.org/rfc/rfc1738.txt">RFC 1738</a> assumes you'll only use US-ASCII, <a href="http://www.rfc-editor.org/rfc/rfc2396.txt">RFC 2396</a> says you're free to use whatever you want which probably often was either ISO-8859-1 or CP1251 (which are not the same BTW) and <a href="http://www.rfc-editor.org/rfc/rfc3986.txt">RFC 3986</a> says UTF-8. What now? Use whatever your server uses to decode the GET parameters. This is often the same as the page encoding but not always.
 
 In addition for the domain name you have to use <a href="http://en.wikipedia.org/wiki/Punycode">Punycode</a>. This includes so much Unicode that if you're not on Java or .NET you have to use <a href="http://www.icu-project.org/">ICU</a>.
 
