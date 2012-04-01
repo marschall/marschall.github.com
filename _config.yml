@@ -1,3 +1,12 @@
 lsi: false
 pygments: true
 safe: true
+
+# top navigation links
+navigation:
+- text: Home
+  url: /index.html
+- text: Open Source
+  url: /open-source.html
+- text: Contact
+  url: /contact.html

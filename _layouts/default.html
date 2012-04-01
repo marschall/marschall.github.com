@@ -11,7 +11,11 @@
    <link rel="stylesheet" href="/bootstrap/css/docs.css" type="text/css" />
    <link rel="stylesheet" href="/bootstrap/css/bootstrap-responsive.css" type="text/css" />
 
-   <!-- meta links -->
+   <!-- RSS / Atom -->
+  <link href="http://marschall.github.com/atom.xml" rel="alternate" type="application/atom+xml" title="posts on marschall.github.com (Atom)" />
+  <link href="http://marschall.github.com/rss.xml" rel="alternate" type="application/rss+xml" title="posts on marschall.github.com (RSS)" />
+
+   <!-- meta navigation links -->
    <link rel="home" href="http://marschall.github.com" />
    {% if page.next.url & page.next.published %}
      <link rel="next" href="{{page.next.url}}" title="{{page.next.title}}" />
@@ -40,12 +44,16 @@
 
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="">
-                <a href="/index.html">Home</a>
+              {% for link in site.navigation %}
+              <li>
+                {% if page.url == link.url %}
+                  <li class="active">
+                {% else %}
+                  <li>
+                {% endif %}
+                <a href="{{ link.url }}">{{ link.text }}</a>
               </li>
-              <li class="">
-                <a href="/open-source.html">Open Source</a>
-              </li>
+              {% endfor %}
             </ul>
           </div>
         </div>
@@ -56,6 +64,9 @@
 
         {{ content }}
 
+      <footer class="footer">
+       <p><a href="https://github.com/marschall/marschall.github.com">source on github</a></p>
+      </footer>
     </div>
 
 </body>
