@@ -6,7 +6,7 @@ layout: nil
 
 {% for post in site.posts %}
   <url>
-    <loc>http://marschall.github.com/{{ post.url }}</loc>
+    <loc>http://marschall.github.com{{ post.url }}</loc>
   </url>
 {% endfor %}
 
