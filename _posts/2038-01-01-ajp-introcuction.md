@@ -52,6 +52,6 @@ Further Reading
  * [TAJPv13](http://tomcat.apache.org/connectors-doc/ajp/ajpv13a.html) describes the AJP13 protocol and goes into some of its history
  * [AJPv13 extensions Proposal](http://tomcat.apache.org/connectors-doc/ajp/ajpv13ext.html) proposes extesions in areas where AJP13 is currently lacking
  * [Apache Module mod_proxy_ajp](http://httpd.apache.org/docs/2.4/mod/mod_proxy_ajp.html) describes the protocol and the Apache module
- * []()
+ * [Deciding between mod_jk, mod_proxy_http and mod_proxy_ajp](http://www.tomcatexpert.com/blog/2010/06/16/deciding-between-modjk-modproxyhttp-and-modproxyajp)
  * []()
 
