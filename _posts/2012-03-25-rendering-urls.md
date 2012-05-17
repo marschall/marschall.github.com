@@ -3,9 +3,6 @@ layout: post
 title: Rendering URLs Considered Hard
 ---
 
-{{ page.title }}
-================
-
 One of the ways how I judge the maturity of a web framework is how it renders URLs. Is it just slamming strings together or is it doing «The Right Thing»™.
 
 Correctly rendering an URL is more involved than one might naïvely assume and includes several steps. Cutting corners is likely to cause trouble with non-ASCII content at some point. If think you'll only ever use ASCII then maybe [Hüttenkäse](http://de.wikipedia.org/wiki/H%C3%BCttenk%C3%A4se) can convice you otherwise.
