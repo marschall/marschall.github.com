@@ -6,7 +6,7 @@ The [latest JKD 8 builds](http://download.java.net/jdk8/changes/jdk8-b58.html) n
 
 Does this Mean an End to java.lang.OutOfMemoryError: PermGen space?
 -------------------------------------------------------------------
-Yes. Now class metadata and interded strings are in [native memory](http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6962931). In fact if you start the latest HotSpot with <code>-XX:MaxPermSize=256m</code> you will get the following error message:
+Yes. Now class metadata and interned strings are in [native memory](http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6962931). In fact if you start the latest HotSpot with <code>-XX:MaxPermSize=256m</code> you will get the following error message:
 
     Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=256m; support was removed in 8.0
 
