@@ -14,5 +14,5 @@ However for whatever reason this didn't happen. So I went and stared implementin
         <scope>test</scope>
     </dependency>
 
-As the version number suggests it's an early version that's likely to have many bugs. It's important to note that this really is only intended for testing purposes and not production use. You can find it on GitHub under https://github.com/marschall/memoryfilesystem along samples and instructions on how to use it.
+As the version number suggests it's an early version that's likely to have many bugs. It's important to note that this really is only intended for testing purposes and not production use. You can find it on GitHub under [https://github.com/marschall/memoryfilesystem] along samples and instructions on how to use it.
 
