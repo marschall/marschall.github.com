@@ -15,3 +15,6 @@ Does this Mean an End to ClassLoader Leaks?
 No. There still are circular references between [Class](http://docs.oracle.com/javase/7/docs/api/java/lang/Class.html) and [ClassLoader](http://docs.oracle.com/javase/7/docs/api/java/lang/ClassLoader.html). There is a good reason for this in the java language specification section [12.7. Unloading of Classes and Interfaces](http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.7). So leaks will stay, you'll just leak native memory instead of PermGen.
 
 The move doesn't seem complete at this point as [VisualVM](http://visualvm.java.net/) still reports a non-empty PermGen.
+
+<strong>Update:</strong>
+It seems that what VisualVM reports as PermGen is actually the new MetaSpace.
