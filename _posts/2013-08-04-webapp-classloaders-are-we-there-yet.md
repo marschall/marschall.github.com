@@ -14,12 +14,12 @@ To avoid as many issues a possible a server should make only as few classes as p
 | JBoss AS 7.1.1     | yes         |
 | JBoss EAP 6.1      | yes         |
 | WildFly AS Alpha 8 | no          |
-| GlassFish 4        | no \(*)\    |
+| GlassFish 4        | no †        |
 | Jetty 9.0.4        | yes         |
 | Resin 4.0.36       | no          |
 | Geronimo 3.0.1     | no          |
  
-\(*\) The GlassFish JSP compiler does not use the Eclipse JDT compiler but makes its JSP compiler available nevertheless
+† The GlassFish JSP compiler does not use the Eclipse JDT compiler but makes its JSP compiler available nevertheless
 
 As we can see most servlet containers and application servers make the Eclipse JDT compiler visible to the application. The ones doing best seem to be ones getting the least attention. This is a case where application servers with some kind of module system can play their strengths.
 
