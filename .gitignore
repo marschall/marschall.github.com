@@ -1,6 +1,10 @@
 *~
+*.swp
 /_site/*
 _site/
 _site
 _site/*
 server/
+.bundle/
+Gemfile.lock
+serve/

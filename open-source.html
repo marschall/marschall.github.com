@@ -51,16 +51,24 @@ Small memory improvements to InjectionMetadata and InitDestroyAnnotationBeanPost
   <li><a href="https://github.com/SpringSource/spring-framework/pull/34">some code clean up</a></li>
   <li><a href="https://jira.springsource.org/browse/SPR-10608">SPR-10608</a> &raquo; 
 Introduce java.nio.file.Path based Resource implementation (<a href="https://github.com/SpringSource/spring-framework/pull/295">pull request</a>)</li>
+ <li><a href="https://jira.springsource.org/browse/SPR-11042">SPR-11042</a> &raquo; 
+Avoid unnecessary char[] allocation in NamedParameterUtils (<a href="https://github.com/spring-projects/spring-framework/pull/397">pull request</a>)</li>
 
 <!--
 https://jira.springsource.org/browse/SPR-10412
 https://jira.springsource.org/browse/SPR-10217
 https://jira.springsource.org/browse/SPR-10588
+https://jira.springsource.org/browse/SPR-11415
 -->
 </ul>
 <h3>WildFly AS</h3>
 <ul>
   <li><a href="https://issues.jboss.org/browse/WFLY-2345">WFLY-2345</a> &raquo; Port offset 0 does not work (<a href="https://github.com/wildfly/wildfly/pull/5307">pull request</a>)</li>
+  <li><a href="https://issues.jboss.org/browse/WFLY-2502">WFLY-2502</a> &raquo; Naming context read-only during RA stop (<a href="https://github.com/wildfly/wildfly/pull/5461">pull request</a>)</li>
+
+  <li><a href="https://issues.jboss.org/browse/WFLY-2693">WFLY-2693</a> &raquo; list-active-jsf-impls is missing reply type (<a href="https://github.com/wildfly/wildfly/pull/5653">pull request</a>)</li>
+  <li><a href="https://issues.jboss.org/browse/WFLY-2709">WFLY-2709</a> &raquo; Connector Subsystem is Missing connection-definitions.clear-statistics resource key (<a href="https://github.com/wildfly/wildfly/pull/5660">pull request</a>)</li>
+
 </ul>
 <h3>JBoss AS</h3>
 <ul>
@@ -72,11 +80,18 @@ https://jira.springsource.org/browse/SPR-10588
   <li><a href="https://issues.jboss.org/browse/AS7-5528">AS7-5528</a> &raquo; Naming context read-only during ResourceAdapter#start() (<a href="https://github.com/jbossas/jboss-as/pull/3035">pull request</a>)</li>
   <li><a href="https://issues.jboss.org/browse/AS7-5584">AS7-5584</a> &raquo; Naming context read-only during SAR deployment (<a href="https://github.com/jbossas/jboss-as/pull/3081">pull request</a>)</li>
 </ul>
+<h3>PicketBox</h3>
+<ul>
+  <li><a href="https://issues.jboss.org/browse/SECURITY-769">SECURITY-769"</a> &raquo; Initialize AbstractServerLoginModule#validOptions with correct size (<a href="https://github.com/picketbox/picketbox-container/pull/1">pull request</a>)</li>
+</ul>
+
 <!--
 <h3>JBoss Logging</h3>
 <ul>
   <li><a href="https://issues.jboss.org/browse/JBLOGGING-92">JBLOGGING-92</a> &raquo; Add support for Equinox ExtendedLogService (<a href="https://github.com/jboss-logging/jboss-logging/pull/5">pull request</a>)</li>
 </ul>
+https://github.com/jboss-logging/jboss-logging/pull/10
+https://issues.jboss.org/browse/JBLOGGING-100
 -->
 <!--
 https://issues.jboss.org/browse/XNIO-195
@@ -97,14 +112,23 @@ https://issues.apache.org/jira/browse/TOMEE-913
 <ul>
   <li><a href="https://github.com/jsr107/jsr107spec/pull/172">jsr107spec-172</a> &raquo; Javadoc Cleanups (<a href="https://github.com/jsr107/jsr107spec/pull/172">pull request</a>)</li>
   <li><a href="https://github.com/jsr107/jsr107spec/pull/192">jsr107spec-192</a> &raquo; Make CachingProvider Closeable (<a href="https://github.com/jsr107/jsr107spec/pull/192">pull request</a>)</li>
-  <li><a href="https://github.com/jsr107/jsr107spec/pull/238">jsr107spec-238<</a> &raquo; Fix Javadoc Warnings (<a href="https://github.com/jsr107/jsr107spec/pull/238">pull request</a>)</li>
-  <li><a href="https://github.com/jsr107/jsr107spec/pull/247">jsr107spec-247<</a> &raquo; Add License Information to Artifacts (<a href="https://github.com/jsr107/jsr107spec/pull/247">pull request</a>)</li>
+  <li><a href="https://github.com/jsr107/jsr107spec/pull/238">jsr107spec-238</a> &raquo; Fix Javadoc Warnings (<a href="https://github.com/jsr107/jsr107spec/pull/238">pull request</a>)</li>
+  <li><a href="https://github.com/jsr107/jsr107spec/pull/247">jsr107spec-247</a> &raquo; Add License Information to Artifacts (<a href="https://github.com/jsr107/jsr107spec/pull/247">pull request</a>)</li>
+  <li><a href="https://github.com/jsr107/jsr107spec/pull/263">jsr107spec-263</a> &raquo; Fix More Javadoc Warnings (<a href="https://github.com/jsr107/jsr107spec/pull/263">pull request</a>)</li>
+<!--
+  <li><a href="https://github.com/jsr107/jsr107spec/pull/291">jsr107spec-291</a> &raquo; Fix &lt; and &gt; Javadoc Warnings (<a href="https://github.com/jsr107/jsr107spec/pull/291">pull request</a>)</li>
+-->
+</ul>
+<h3>CGLib</h3>
+<ul>
+  <li><a href="http://sourceforge.net/p/cglib/bugs/39/">Bug 39</a> &raquo;  [patch] DebuggingClassWriter broken in 3.0</li>
+</ul>
+<h3>Jandex Maven Plugin</h3>
+<ul>
+  <li><a href="https://github.com/jdcasey/jandex-maven-plugin/pull/2">#2</a> &raquo; Mark Plugin as Thread Safe</li>
+  <li><a href="https://github.com/jdcasey/jandex-maven-plugin/pull/3">#3</a> &raquo; Update Dependencies</li>
 </ul>
 
-<!--
-cglib
-https://sourceforge.net/tracker/?func=detail&aid=3601081&group_id=56933&atid=482368
--->
 <!--
 <h3>Kotlin</h3>
 <ul>
@@ -148,3 +172,9 @@ https://sourceforge.net/tracker/?func=detail&aid=3601081&group_id=56933&atid=482
   <li><a href="http://jira.magnolia-cms.com/browse/MGNLDATA-38">MGNLDATA-38</a> &raquo; Bugs in type tree configuration</li>
   <li><a href="http://jira.magnolia-cms.com/browse/MGNLSCRSH-2">MGNLSCRSH-2</a> &raquo; cleanup: pom.xml</li>
 </ul>
+<!--
+https://github.com/dblevins/mdb-improvements/pull/1
+https://github.com/dblevins/mdb-improvements/pull/2
+https://github.com/dblevins/mdb-improvements/pull/3
+-->
+

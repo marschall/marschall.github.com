@@ -43,7 +43,7 @@ AJP can be seen as another alternative to FastCGI. Compared to other protocols A
  * Values come pre-parsed in XDR-like <code>type-length-value</code> format making them easy and fast to parse.
  * Information about the original connection like IP address and port is available.
  * SSL/TLS information about the original connection like session id, cipher and key size is available
- * Apache variables starting with <code>AJP_</code> are available.
+ * Apache variables starting with <code>AJP</code> are available.
  * It's supported by third party tools like Wireshark.
 
 Further Reading
