@@ -1,6 +1,7 @@
 lsi: false
 pygments: true
 safe: true
+markdown: kramdown
 
 # top navigation links
 navigation:
