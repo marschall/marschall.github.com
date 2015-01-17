@@ -26,12 +26,12 @@ while (result.next()) {
 // forget to call close() on statement
 {% endhighlight %}
 
-As leaked `PreparedStatement` are never garbage collected and can have quite large Java resources associated with them (at least with the 11g driver) `PreparedStatement` leaks tend to result in an application crash caused by a `java.lang.OutOfMemoryError`. Other possibilities are failing connections due to too many open cursors for a database session.
+As leaked `PreparedStatement` are never garbage collected and can have quite large Java resources associated with them (at least with the 11g driver) `PreparedStatement` leaks tend to result in an application crash caused by a `OutOfMemoryError`. Other possibilities are failing connections due to too many open cursors for a database session.
 
 Post Mortem
 -----------
 
-The final manifestion of a `PreparedStatement` leak is an application crash caused by a `java.lang.OutOfMemoryError`. Running your JVM with `-XX:+HeapDumpOnOutOfMemoryError` ensures that if a `java.lang.OutOfMemoryError` occurs you have a heap dump which can be analyzed. If no heap dump is available fixing a `java.lang.OutOfMemoryError` becomes much more difficult. The first thing I do when analyzing a heap dump is load it into [Eclipse MAT]() and verify it is indeed a `PreparedStatement` leak. This can be done looking at the number of `T4CPreparedStatement` instances in the heap. If there are a couple of thousand then we are looking at a prepared statement leak. Now that we have established that we are indeed dealign with a `PreparedStatement` leak the next step is to extract the SQL used to create these statements. From the SQL it is often easy to search the code base for the place that exhibits the bug. When using the ojdbc driver the SQL of all the `PreparedStatement` instances in the heap can be found with the following OQL query:
+The final manifestion of a `PreparedStatement` leak is an application crash caused by a `OutOfMemoryError`. Running your JVM with `-XX:+HeapDumpOnOutOfMemoryError` ensures that if a `OutOfMemoryError` occurs you have a heap dump which can be analyzed. If no heap dump is available fixing a `java.lang.OutOfMemoryError` becomes much more difficult. The first thing I do when analyzing a heap dump is load it into [Eclipse MAT]() and verify it is indeed a `PreparedStatement` leak. This can be done looking at the number of `T4CPreparedStatement` instances in the heap. If there are a couple of thousand then we are looking at a prepared statement leak. Now that we have established that we are indeed dealign with a `PreparedStatement` leak the next step is to extract the SQL used to create these statements. From the SQL it is often easy to search the code base for the place that exhibits the bug. When using the ojdbc driver the SQL of all the `PreparedStatement` instances in the heap can be found with the following OQL query:
 
 {% highlight sql %}
 SELECT DISTINCT toString(oracle_sql.value)
