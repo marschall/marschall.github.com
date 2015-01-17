@@ -9,6 +9,7 @@ Introduction
 Over the past several weeks I debugged several `PreparedStatement` leaks in an application from a third party vendor. This post summarizes several techniques I found effective in tracking down the piece of code that exhibits those bugs. I will also show several approaches how you can monitor or avoid `PreparedStatement` leaks. 
 
 What is a `PreparedStatement` leak, how does it happen and why is it bad? A `PreparedStatement` leak happens when you forget to call `#close()` on a `PreparedStatement` this prevents
+
  * the `PreparedStatement` from releasing its associated Java resources (which can be significant)
  * the `PreparedStatement` from being garbge collected
  * the database from releasing any associated resources
