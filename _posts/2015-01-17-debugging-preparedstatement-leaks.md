@@ -70,5 +70,5 @@ There are several ways how you can design your code so that it never leaks `Prep
 Further Reading
 ---------------
 
- * [](http://www.oracle.com/technetwork/database/application-development/jdbc-memory-management-12c-1964666.pdf)
+ * [Oracle JDBC Memory Management](http://www.oracle.com/technetwork/database/application-development/jdbc-memory-management-12c-1964666.pdf)
 
