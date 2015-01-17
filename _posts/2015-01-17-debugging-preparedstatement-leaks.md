@@ -15,7 +15,7 @@ What is a `PreparedStatement` leak, how does it happen and why is it bad? A `Pre
 
 The simplest possible `PreparedStatement` leak looks something like this:
 
-```java
+{% highlight java %}
 PreparedStatement statement = connection.prepareStatement("SELECT X FROM dual");
 ResultSet result = statement.executeQuery();
 while (result.next()) {
@@ -23,7 +23,7 @@ while (result.next()) {
 }
 // forget to call close() on result
 // forget to call close() on statement
-```
+{% endhighlight %}
 
 As leaked `PreparedStatement` are never garbage collected and can have quite large Java resources associated with them (at least with the 11g driver) `PreparedStatement` leaks tend to result in an application crash caused by a `java.lang.OutOfMemoryError`. Other possibilities are failing connections due to too many open cursors for a database session.
 
@@ -32,10 +32,10 @@ Post Mortem
 
 The final manifestion of a `PreparedStatement` leak is an application crash caused by a `java.lang.OutOfMemoryError`. Running your JVM with `-XX:+HeapDumpOnOutOfMemoryError` ensures that if a `java.lang.OutOfMemoryError` occurs you have a heap dump which can be analyzed. If no heap dump is available fixing a `java.lang.OutOfMemoryError` becomes much more difficult. The first thing I do when analyzing a heap dump is load it into [Eclipse MAT]() and verify it is indeed a `PreparedStatement` leak. This can be done looking at the number of `T4CPreparedStatement` instances in the heap. If there are a couple of thousand then we are looking at a prepared statement leak. Now that we have established that we are indeed dealign with a `PreparedStatement` leak the next step is to extract the SQL used to create these statements. From the SQL it is often easy to search the code base for the place that exhibits the bug. When using the ojdbc driver the SQL of all the `PreparedStatement` instances in the heap can be found with the following OQL query:
 
-```sql
+{% highlight sql %}
 SELECT DISTINCT toString(oracle_sql.value)
 FROM oracle.jdbc.driver.OracleSql
-```
+{% endhighlight %}
 
 after exporting the result to a CSV and importing it into [SQLite Manager](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/) the result can be postprocessed, trailing characters and be removed and the queries can be grouped and counted.
 
