@@ -64,7 +64,7 @@ Avoiding PreparedStatement Leaks
 
 There are several ways how you can design your code so that it never leaks `PreparedStatement`s.
 
- * You can use Java 7 try-with-resources. Java 7 is the oldest version of Java supported by Oracle, there is no reason to not bet at least using Java 7.
+ * You can use Java 7 [try-with-resources](http://docs.oracle.com/javase/7/docs/technotes/guides/language/try-with-resources.html). Java 7 is the oldest version of Java [supported](http://www.oracle.com/technetwork/java/eol-135779.html) by Oracle as of the time writing this article, there is no reason to not bet at least using Java 7.
  * You can use an [ORM](http://en.wikipedia.org/wiki/Object-relational_mapping) or a different database access framework like [jOOQ](http://www.jooq.org/), [MyBatis](http://mybatis.github.io/mybatis-3/) or [QueryDSL](http://www.querydsl.com/). These abstract JDBC away and manage JDBC resources for you.
  * You can use a utility class like Spring [JdbcTemplate]() or [Apache Commons DbUtils](http://commons.apache.org/proper/commons-dbutils/). These do not abstract JDBC away but still manage JDBC resources for you. Note that `JdbcTemplate` does not require a Spring application context, so you are not forced to use Spring if you want to use `JdbcTemplate`.
 
