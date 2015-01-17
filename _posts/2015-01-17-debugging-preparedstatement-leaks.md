@@ -57,7 +57,7 @@ beware that while this command runs all Java code in the JVM is stopped. An appl
 
 Oracle also allows you to monitor the open cursors per sessions. If a database session has more than one hundred cursors open you likely have a `PreparedStatement` leak. Your SysDBA knows more.
 
-And finally the Tomcat connection pool (jdbc-pool) allows you to tack and close the open `PreparedStatement` per request. This can be a band aid to keep your application running despite having `PreparedStatement` leaks.
+And finally the Tomcat connection pool ([jdbc-pool](http://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html#org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer)) allows you to tack and close the open `PreparedStatement` per request. This can be a band aid to keep your application running despite having `PreparedStatement` leaks.
 
 Avoiding PreparedStatement Leaks
 --------------------------------
