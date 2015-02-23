@@ -5,13 +5,13 @@ title: How to Headless Flight Recorder
 
 This is more a documentation for myself on how to run [Flight Recorder](http://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) headless on start up. You will have to use Template Manager im Mission Control first to create a settings file.
 
-{% highlight %}
+<pre><code>
 -XX:+UnlockCommercialFeatures \
 -XX:+FlightRecorder \
 -XX:+UnlockDiagnosticVMOptions \
 -XX:+DebugNonSafepoints \
 -XX:StartFlightRecording=duration=120s,filename=Recording.jfr,settings=settings.jfc
-{% endhighlight %}
+</code></pre>
 
 Sources
 -------
