@@ -7,14 +7,14 @@ layout: nil
 <!-- navigation -->
 {% for link in site.navigation %}
   <url>
-    <loc>http://marschall.github.com{{ link.url }}</loc>
+    <loc>https://marschall.github.io{{ link.url }}</loc>
   </url>
 {% endfor %}
 
 <!-- posts -->
 {% for post in site.posts %}
   <url>
-    <loc>http://marschall.github.com{{ post.url }}</loc>
+    <loc>https://marschall.github.io{{ post.url }}</loc>
   </url>
 {% endfor %}
 
