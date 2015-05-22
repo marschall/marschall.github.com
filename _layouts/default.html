@@ -6,9 +6,10 @@
   <meta name="generator" content="Jekyll" />
   <meta name="robots" content="index,follow" />
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" type="text/css" />
-  <link rel="stylesheet" href="/bootstrap/css/docs.css" type="text/css" />
+  <link rel="stylesheet" href="/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="/css/custom.css" type="text/css" />
 
    <!-- RSS / Atom -->
   <link href="https://marschall.github.io/atom.xml" rel="alternate" type="application/atom+xml" title="posts on marschall.github.io (Atom)" />
@@ -25,40 +26,33 @@
    {% endif %}
 
 </head>
-<body data-spy="scroll" data-target=".subnav" data-offset="50">
+<body>
 
   <!-- Navbar
     ================================================== -->
-    <div class="navbar navbar-fixed-top">
+    <header class="navbar navbar-default navbar-fixed-top">
 
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/index.html">marschall.github.io</a>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">marschall.github.io</a>
 
-          <div class="nav-collapse">
-            <ul class="nav">
-              {% for link in site.navigation %}
-              <li>
-                {% if page.url == link.url %}
-                  <li class="active">
-                {% else %}
-                  <li>
-                {% endif %}
-                <a href="{{ link.url }}">{{ link.text }}</a>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {% for link in site.navigation %}
+            <li>
+              {% if page.url == link.url %}
+                <li class="active">
+              {% else %}
+                <li>
+              {% endif %}
+              <a href="{{ link.url }}">{{ link.text }}</a>
+            </li>
+            {% endfor %}
+          </ul>
         </div>
       </div>
-    </div>
+    </header>
  
-    <div class="container">
+    <div id="main-content" class="container">
 
         {{ content }}
 
@@ -67,5 +61,7 @@
       </footer>
     </div>
 
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
