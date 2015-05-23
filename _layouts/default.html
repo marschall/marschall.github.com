@@ -8,14 +8,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="/bootstrap-3.3.4/css/bootstrap.min.css" type="text/css" />
   <style>
-    #main-content {
-      padding-top: 60px;
-    }
-
-    .footer {
-      padding-top: 60px;
+    .navbar {
+      display: none;
     }
   </style>
 
@@ -70,6 +65,18 @@
       </footer>
     </div>
 
+    <script>
+      var loadCss = function(href) {
+        var link = document.createElement("link");
+        link.href = href;
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        document.getElementsByTagName("head")[0].appendChild(link);
+      };
+    
+      loadCss("/css/custom.css");
+      loadCss("/bootstrap-3.3.4/css/bootstrap.min.css");
+    </script>
     <script src="/js/jquery-1.11.3.min.js"></script>
     <script src="/bootstrap-3.3.4/js/bootstrap.min.js"></script>
 </body>
