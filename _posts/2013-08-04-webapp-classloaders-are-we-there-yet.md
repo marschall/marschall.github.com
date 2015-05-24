@@ -7,6 +7,7 @@ Much has been written about classloader issues in Java web applications. One way
 
 To avoid as many issues a possible a server should make only as few classes as possible available to the application, ideally only the API classes form the JavaEE specifications. Especially a server should not make libraries it uses itself availble to an application. Making them available will likely cause issues when the application uses a different version of the same library. After debugging an issue in this area I chose to invesitage which application servers make the [Eclipse JDT compiler](http://www.eclipse.org/jdt/core/) which is used for JSP compilation visible to the application. If your application packages its own version of the Eclipse JDT compiler this will likely result in a conflict. For example the [Apache Cocoon](http://cocoon.apache.org) framework depends on the Eclipse JDT compiler.
 
+{:.table .table-condensed}
 | Server             | JDT visible  
 |-------------------:|-------------
 | Tomcat 7           | yes         
@@ -23,7 +24,10 @@ To avoid as many issues a possible a server should make only as few classes as p
 
 As we can see most servlet containers and application servers make the Eclipse JDT compiler visible to the application. The ones doing best seem to be ones getting the least attention. This is a case where application servers with some kind of module system can play their strengths.
 
+<ins>Update</ins> the WildFly fix got lost for WildFly 9 and then fixed again.
+
 Related Issues
 --------------
  * [WFLY-1770](https://issues.jboss.org/browse/WFLY-1770)
+ * [WFLY-4485](https://issues.jboss.org/browse/WFLY-4485)
 
