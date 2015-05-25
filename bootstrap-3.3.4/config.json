@@ -389,7 +389,12 @@
     "breadcrumbs.less"
   ],
   "js": [
-    "collapse.js"
+    "dropdown.js",
+    "tab.js",
+    "affix.js",
+    "collapse.js",
+    "scrollspy.js",
+    "transition.js"
   ],
-  "customizerUrl": "http://getbootstrap.com/customize/?id=8f90cc2c9295c92aa4c0"
+  "customizerUrl": "http://getbootstrap.com/customize/?id=de289a61ac13727446b6"
 }
