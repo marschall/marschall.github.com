@@ -38,7 +38,7 @@ SELECT DISTINCT toString(oracle_sql.value)
 FROM oracle.jdbc.driver.OracleSql
 {% endhighlight %}
 
-after exporting the result to a CSV and importing it into [SQLite Manager](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/) the result can be postprocessed, trailing characters and be removed and the queries can be grouped and counted.
+after exporting the result to a CSV and importing it into [SQLite Manager](https://addons.mozilla.org/en-US/firefox/addon/sqlite-manager/) the result can be postprocessed, trailing characters can be removed and the queries can be grouped and counted.
 
 Monitoring
 ----------
