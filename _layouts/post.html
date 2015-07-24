@@ -2,10 +2,9 @@
 layout: default
 ---
 <section class="h-entry">
-  <div class="page-header">
-    <h1 class="p-name">{{ page.title }}</h1>
-  </div>
+  <h1 class="page-header p-name">{{ page.title }}</h1>
   <div class="row">
+    <time class="dt-published" datetime="{{ page.date | date: "%F" }}">{{ page.date | date: "%Y %B %-d" }}</time>
     <div class="span6 e-content">
       {{ content }}
     </div>
