@@ -1,5 +1,5 @@
 lsi: false
-highlighter: pygments
+highlighter: rouge
 safe: true
 markdown: kramdown
 
