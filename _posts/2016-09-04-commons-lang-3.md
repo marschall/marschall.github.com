@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Apache Commons Lang 3.5: Two Steps Forward in Performance
+title: 'Apache Commons Lang 3.5: Two Steps Forward in Performance'
 ---
 
 When [Apache Commons Lang](https://commons.apache.org/proper/commons-lang/) [3.5](https://issues.apache.org/jira/browse/LANG/fixforversion/12331955/) will eventually be released it will contain among others two performance improvements.
