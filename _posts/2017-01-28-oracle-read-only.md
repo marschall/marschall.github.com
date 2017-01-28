@@ -3,7 +3,7 @@ layout: post
 title: Oracle Read Only Transactions
 ---
 
-Oracle supports [read only transactions](https://docs.oracle.com/database/121/SQLRF/statements_10005.htm#SQLRF55418). They give you read consistency including [repeatable reads](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Repeatable_reads). This means you only see changes that were committed before the read only transaction was started. You do not see any changes that are committed by other transactions while the read only transaction is running. In addition the allowed only queries are `SELECT` statements without the `FOR UPDATE` clause. Read only transactions can be a very useful feature as they give you a consistent view of the database across several queries.
+Oracle supports [read only transactions](https://docs.oracle.com/database/121/SQLRF/statements_10005.htm#SQLRF55418). They give you read consistency including <a href="https://en.wikipedia.org/wiki/Isolation_(database_systems)#Repeatable_reads">repeatable reads</a>. This means you only see changes that were committed before the read only transaction was started. You do not see any changes that are committed by other transactions while the read only transaction is running. In addition the allowed only queries are `SELECT` statements without the `FOR UPDATE` clause. Read only transactions can be a very useful feature as they give you a consistent view of the database across several queries.
 
 Unfortunately read only Oracle transactions are hard to use using JDBC. Calling [Connection.setReadOnly(true)](https://docs.oracle.com/javase/8/docs/api/java/sql/Connection.html#setReadOnly-boolean-) with the 12c driver no longer establishes a read only transaction as it did the with 9i and 10g drivers (I am unsure about the behavior of the 11g drivers).
 
@@ -15,5 +15,5 @@ If you want a read only Oracle transaction you have to call
 SET TRANSACTION READ ONLY;
 ```
 
-If you want to avoid this but still want read consistency and repeatable reads with Oracle you have to use the [serializable](https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable) isolation level (which theoretically is only snapshot isolation).
+If you want to avoid this but still want read consistency and repeatable reads with Oracle you have to use the <a href="https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable">serializable</a> isolation level (which theoretically is only snapshot isolation).
 
