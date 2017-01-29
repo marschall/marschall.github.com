@@ -15,7 +15,7 @@ Spring supports the concept of [read only Spring transactions](https://docs.spri
 
 ## Summary
 
-If you want a read only Oracle transaction you have to call
+If you want a read only Oracle database transaction you have to call
 
 ```sql
 SET TRANSACTION READ ONLY;
