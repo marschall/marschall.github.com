@@ -2,7 +2,8 @@
 layout: post
 title: True Read Only Transactions with Spring 4.3.7
 ---
-Spring 4.3.7 contains [SPR-15210](https://jira.spring.io/browse/SPR-15210) which for the first time gives true read only database transactions.  The feature has to be explicitly enabled using [setEnforceReadOnly](https://docs.spring.io/spring/docs/4.3.7.BUILD-SNAPSHOT/javadoc-api/org/springframework/jdbc/datasource/DataSourceTransactionManager.html#setEnforceReadOnly-boolean-)
+
+Spring 4.3.7 contains [SPR-15210](https://jira.spring.io/browse/SPR-15210) which for the first time provides true read only database transactions.  The feature has to be explicitly enabled by using [setEnforceReadOnly](https://docs.spring.io/spring/docs/4.3.7.BUILD-SNAPSHOT/javadoc-api/org/springframework/jdbc/datasource/DataSourceTransactionManager.html#setEnforceReadOnly-boolean-)
 
 ```java
 DataSourceTransactionManager txManager = new DataSourceTransactionManager(dataSource);
