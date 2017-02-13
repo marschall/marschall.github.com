@@ -24,5 +24,5 @@ SET TRANSACTION READ ONLY;
 If you want to avoid this but still want read consistency and repeatable reads with Oracle you have to use the <a href="https://en.wikipedia.org/wiki/Isolation_(database_systems)#Serializable">serializable</a> isolation level (which theoretically is only snapshot isolation).
 
 ### Update
-This is fixed in Spring 4.3.7
+This has changed in [Spring 4.3.7](2017-02-13-spring-read-only.md).
 
