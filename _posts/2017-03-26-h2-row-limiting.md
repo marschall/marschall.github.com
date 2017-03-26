@@ -11,5 +11,5 @@ FETCH FIRST n ROWS ONLY
 
 Unfortunately this is currently not [documented](https://www.h2database.com/html/grammar.html#select) but this is hopefully fixed in the future.
 
-Know that this is used for pagination it as correctness issues if the result set is updated between two queries and has performance issues for large offsets. For more information check out Markus Winand's article on [keyset pagination](https://use-the-index-luke.com/no-offset) on the subject.
+Know that if this is used for pagination it as correctness issues if the result set is updated between two queries and has performance issues for large offsets. For more information check out Markus Winand's article on [keyset pagination](https://use-the-index-luke.com/no-offset).
 
