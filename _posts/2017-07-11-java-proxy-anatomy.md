@@ -3,11 +3,12 @@ layout: post
 title: Anatomy of a Java Proxy
 ---
 
-The [Dynamic Proxy Classes](https://docs.oracle.com/javase/8/docs/technotes/guides/reflection/proxy.html) facility allows to define dynamic [proxies](https://en.wikipedia.org/wiki/Proxy_pattern) for Java interfaces at runtime. It is important to note that dynamic proxies in Java require almost no JVM support. They are normal Java classes whose byte code is generated at runtime. The only JVM support required is for turning that byte code into a class.
-
-In order to find out what such a generated class looks like you have to set the `sun.misc.ProxyGenerator.saveGeneratedFiles` system property to `true` using the following JVM command line argument `-Dsun.misc.ProxyGenerator.saveGeneratedFiles=true`. This will save all generated proxy classes to files in a package directory structure in the working directory of the JVM. In Java 9 there is an API for this in the form of `MethodHandles.Lookup#defineClass(byte[])` but Oracle keeps on using the internal `Unsafe` class (Java 8 uses JNI code).
+The [Dynamic Proxy Classes](https://docs.oracle.com/javase/8/docs/technotes/guides/reflection/proxy.html) facility of Java allows to define dynamic [proxies](https://en.wikipedia.org/wiki/Proxy_pattern) for interfaces at runtime. It is important to note that dynamic proxies in Java require almost no JVM support. They are normal Java classes whose byte code is generated at runtime. The only JVM support required is for turning that byte code into a class. In Java 9 there is an API for this in the form of `MethodHandles.Lookup#defineClass(byte[])` but Oracle keeps on using the internal `Unsafe` class (Java 8 uses JNI code).
 
 Two classes are essential for understanding how proxies work in Java. [java.lang.reflect.Proxy](https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/Proxy.html) is the superclass of all proxies and the allows to create new proxy instances and [java.lang.reflect.InvocationHandler](https://docs.oracle.com/javase/8/docs/api/java/lang/reflect/InvocationHandler.html) is then called by the proxy.
+
+In order to find out what such a generated class looks like you have to set the `sun.misc.ProxyGenerator.saveGeneratedFiles` system property to `true` using the following JVM command line argument `-Dsun.misc.ProxyGenerator.saveGeneratedFiles=true`. This will save all generated proxy classes to files in a package directory structure in the working directory of the JVM.
+
 
 So for a simple interface
 
@@ -91,8 +92,9 @@ final class $Proxy4 extends Proxy implements SampleInterface {
 
 A few things are important to note where:
 
-1. The proxy classes are cached per classloader interface array pair. That means if you create a new proxy, and there has already been a proxy class generated for this classloader and these interfaces then that class will be instantiated instead of a new one being generated.
-1. All the `java.lang.reflect.Method` instances for all interface methods are kept in constants. This means they are live at least as long as the classloader for which the proxy was generated is live.
+1. `super.h.` is the `InvocationHandler` stored in the superclass (`Proxy`).
+1. The proxy classes are cached per classloader and interface array pair. That means if you create a new proxy and there has already been a proxy class generated for this classloader and these interfaces then that class will be instantiated instead of a new one being generated.
+1. All the `java.lang.reflect.Method` instances for all interface methods are kept in constants. This means they are [live](http://www.memorymanagement.org/glossary/l.html#live) as long as the classloader for which the proxy was generated is live.
 
 An interesting detail is that when annotations are accessed through the Java reflection API a proxy class is generated for every annotation class. So for an annotation like this 
 
