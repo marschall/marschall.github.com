@@ -90,7 +90,7 @@ final class $Proxy4 extends Proxy implements SampleInterface {
 }
 ```
 
-A few things are important to note where:
+A few things are important to note here:
 
 1. `super.h.` is the `InvocationHandler` stored in the superclass (`Proxy`).
 1. The proxy classes are cached per classloader and interface array pair. That means if you create a new proxy and there has already been a proxy class generated for this classloader and these interfaces then that class will be instantiated instead of a new one being generated.

@@ -75,7 +75,7 @@ public class SimpleClass$$EnhancerByCGLIB$$2703a4e5 extends SimpleClass {
 }
 ```
 
-A few things are important to note where:
+A few things to note here:
 
 1. The code does not use [safe publication](https://shipilev.net/blog/2014/safe-public-construction/) exhibits a [benign race](https://shipilev.net/blog/2016/close-encounters-of-jmm-kind/#wishful-benign-is-resilient) if _safe initialization_ rules are followed for the `MethodInterceptor`.
 1. Apart from the lazy initialization the code is very similar to a [java interface proxy](https://marschall.github.io/2017/07/11/java-proxy-anatomy.html), the different being only an additional constant being passed.
