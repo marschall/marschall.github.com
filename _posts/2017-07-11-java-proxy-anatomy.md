@@ -34,23 +34,23 @@ final class $Proxy4 extends Proxy implements SampleInterface {
     super(var1);
   }
 
-  public final boolean equals(Object var1) {
+  public final boolean equals(Object obj) {
     try {
-      return (Boolean) super.h.invoke(this, m1, new Object[]{var1});
-    } catch (RuntimeException | Error var3) {
-      throw var3;
-    } catch (Throwable var4) {
-      throw new UndeclaredThrowableException(var4);
+      return (Boolean) super.h.invoke(this, m1, new Object[]{obj});
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
   public final String toString() {
     try {
       return (String) super.h.invoke(this, m2, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
@@ -58,20 +58,20 @@ final class $Proxy4 extends Proxy implements SampleInterface {
   public final String method() {
     try {
       return (String) super.h.invoke(this, m3, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
   public final int hashCode() {
     try {
-      return (Integer) super.h.invoke(this, m0, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+      return ((Integer) super.h.invoke(this, m0, (Object[]) null)).intValue();
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
@@ -96,6 +96,7 @@ A few things are important to note here:
 1. The proxy classes are cached per classloader and interface array pair. That means if you create a new proxy and there has already been a proxy class generated for this classloader and these interfaces then that class will be instantiated instead of a new one being generated.
 1. All the `java.lang.reflect.Method` instances for all interface methods are kept in constants. This means they are [live](http://www.memorymanagement.org/glossary/l.html#live) as long as the classloader for which the proxy was generated is live.
 1. Primitive objects are boxed.
+1. `null` instead of an empty array is passed when a method has no arguments.
 
 An interesting detail is that when annotations are accessed through the Java reflection API a proxy class is generated for every annotation class. So for an annotation like this 
 
@@ -123,43 +124,43 @@ final class $Proxy5 extends Proxy implements SampleAnnotation {
     super(var1);
   }
 
-  public final boolean equals(Object var1) {
+  public final boolean equals(Object obj) {
     try {
-      return (Boolean) super.h.invoke(this, m1, new Object[]{var1});
-    } catch (RuntimeException | Error var3) {
-      throw var3;
-    } catch (Throwable var4) {
-      throw new UndeclaredThrowableException(var4);
+      return (Boolean) super.h.invoke(this, m1, new Object[]{obj});
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
   public final String toString() {
     try {
       return (String) super.h.invoke(this, m2, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
   public final Class annotationType() {
     try {
       return (Class) super.h.invoke(this, m4, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
   public final int hashCode() {
     try {
-      return (Integer) super.h.invoke(this, m0, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+      return ((Integer) super.h.invoke(this, m0, (Object[]) null)).intValue();
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
@@ -167,10 +168,10 @@ final class $Proxy5 extends Proxy implements SampleAnnotation {
   public final String value() {
     try {
       return (String) super.h.invoke(this, m3, (Object[]) null);
-    } catch (RuntimeException | Error var2) {
-      throw var2;
-    } catch (Throwable var3) {
-      throw new UndeclaredThrowableException(var3);
+    } catch (RuntimeException | Error e) {
+      throw e;
+    } catch (Throwable e) {
+      throw new UndeclaredThrowableException(e);
     }
   }
 
