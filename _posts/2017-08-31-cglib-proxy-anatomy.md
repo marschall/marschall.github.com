@@ -5,7 +5,7 @@ title: Anatomy of a CGLIB Proxy
 
 CGLIB allows proxy class generation where normal JDK proxies are not an option. Most notably this covers the cases when a class rather than in interface needs to be proxied.
 
-In order to find out what such a generated class looks like you have to set the `cglib.debugLocation` system property to `true` using the following JVM command line argument `-Dcglib.debugLocation=/home/user/cglib`.
+In order to find out what such a generated class looks like you have to set the `cglib.debugLocation` system property to a folder into which the generated classes should be stored. This can be done using the following JVM command line argument `-Dcglib.debugLocation=/home/user/cglib`.
 
 
 So for a simple class 
