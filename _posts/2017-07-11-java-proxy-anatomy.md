@@ -95,6 +95,7 @@ A few things are important to note here:
 1. `super.h.` is the `InvocationHandler` stored in the superclass (`Proxy`).
 1. The proxy classes are cached per classloader and interface array pair. That means if you create a new proxy and there has already been a proxy class generated for this classloader and these interfaces then that class will be instantiated instead of a new one being generated.
 1. All the `java.lang.reflect.Method` instances for all interface methods are kept in constants. This means they are [live](http://www.memorymanagement.org/glossary/l.html#live) as long as the classloader for which the proxy was generated is live.
+1. Primitive objects are boxed.
 
 An interesting detail is that when annotations are accessed through the Java reflection API a proxy class is generated for every annotation class. So for an annotation like this 
 
