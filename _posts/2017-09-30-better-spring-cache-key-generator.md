@@ -6,7 +6,29 @@ published: false
 
 The default key generators for Spring Cache [SimpleKeyGenerator](https://github.com/spring-projects/spring-framework/blob/master/spring-context/src/main/java/org/springframework/cache/interceptor/SimpleKeyGenerator.java) and [SimpleKey](https://github.com/spring-projects/spring-framework/blob/master/spring-context/src/main/java/org/springframework/cache/interceptor/SimpleKey.java) only consider the argument types of a method and not the method itself. This means that if you have two different methods with the same argument types (eg. `Integer` or `String`) and the arguments themselves are equal then Spring Cache will return results from one methods in calls to the other method if the same cache is used for both methods.
 
-The following key generator solves this issue and also works correctly in the face of multiple implementations of the same interface method.
+To illustarte the issue consider the following example
+
+```java
+@CacheConfig(cacheNames = "default")
+public class SampleService {
+
+  @Cacheable
+  public Model1 getModel1(Integer id) {
+    return // ...
+  }
+
+  @Cacheable
+  public Model2 getModel2(Integer id) {
+    return // ...
+  }
+
+}
+```
+
+If you first call `#getModel1` with `1` and then call `#getModel2` with `1` then Spring Cache will return the value that `#getModel1` returned because all the method arguments are equal. This is almost certainly not what you want.
+
+
+The following key generator solves this issue. It also works correctly in the face of multiple implementations of the same interface method.
 
 
 ```java
@@ -21,7 +43,7 @@ The following key generator solves this issue and also works correctly in the fa
  * {@link #generate(Object, Method, Object...)} method will be the interface
  * method and therefore be the same for both implemetations.</p>
  */
-class WorkingKeyGenerator implements KeyGenerator {
+final class WorkingKeyGenerator implements KeyGenerator {
 
   @Override
   public Object generate(Object target, Method method, Object... params) {
@@ -85,11 +107,11 @@ class WorkingKeyGenerator implements KeyGenerator {
 
 ```
 
-Configure Spring Cache to use this key generator.
+Then configure Spring Cache to use this key generator.
 
 
 ```java
-public class P2XCachingConfigurer extends CachingConfigurerSupport {
+public class WorkingCachingConfigurer extends CachingConfigurerSupport {
 
   @Override
   public KeyGenerator keyGenerator() {
