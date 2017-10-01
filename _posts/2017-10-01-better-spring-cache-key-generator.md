@@ -1,7 +1,6 @@
 ---
 layout: post
 title: A Better Spring Cache KeyGenerator
-published: false
 ---
 
 The default key generators for Spring Cache [SimpleKeyGenerator](https://github.com/spring-projects/spring-framework/blob/master/spring-context/src/main/java/org/springframework/cache/interceptor/SimpleKeyGenerator.java) and [SimpleKey](https://github.com/spring-projects/spring-framework/blob/master/spring-context/src/main/java/org/springframework/cache/interceptor/SimpleKey.java) only consider the argument types of a method and not the method itself. This means that if you have two different methods with the same argument types (eg. `Integer` or `String`) and the arguments themselves are equal then Spring Cache will return results from one methods in calls to the other method if the same cache is used for both methods.
