@@ -5,8 +5,6 @@ title: Using /dev/urandom with SecureRandom
 
 If you want to use a `SecureRandom` in Java that uses `/dev/urandom` you can the an instance with
 
-or simply
-
 ```java
 SecureRandom.getInstance("NativePRNGNonBlocking");
 ```
