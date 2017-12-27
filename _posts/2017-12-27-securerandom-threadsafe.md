@@ -6,7 +6,7 @@ published: false
 
 Before Java 9 the thread safety contract of `SecureRandom` and  `SecureRandomSPI` was not specified (see [JDK-7004967](https://bugs.openjdk.java.net/browse/JDK-7004967)). As of Java 8 the situation was that `SecureRandom` was thread safe by virtue of being `synchronized` internally. This of course limits parallelism.
 
-With Java 9 the situation has now changed (see [JDK-8169871](https://bugs.openjdk.java.net/browse/JDK-8169871) and [JDK-8165115](https://bugs.openjdk.java.net/browse/JDK-8165115)). A [SecureRandomSpi](https://docs.oracle.com/javase/9/docs/api/java/security/SecureRandomSpi.html) can now optionally document that it is thread safe. If it is marked as thread safe then [SecureRandom](https://docs.oracle.com/javase/9/docs/api/java/security/SecureRandom.html) will not synchronize access to the it. If the `SecureRandomSPI` is no marked as thread safe then the behavior is the same as in Java 8 and `SecureRandom` will synchronize all access to it.
+With Java 9 the situation has now changed (see [JDK-8169871](https://bugs.openjdk.java.net/browse/JDK-8169871) and [JDK-8165115](https://bugs.openjdk.java.net/browse/JDK-8165115)). A [SecureRandomSpi](https://docs.oracle.com/javase/9/docs/api/java/security/SecureRandomSpi.html) can now optionally document that it is thread safe. If it is marked as thread safe then [SecureRandom](https://docs.oracle.com/javase/9/docs/api/java/security/SecureRandom.html) will not synchronize access to it. If the `SecureRandomSPI` is no marked as thread safe then the behavior is the same as in Java 8 and `SecureRandom` will synchronize all access to it.
 
 All thread safe `SecureRandomSPI`s can be found with
 
