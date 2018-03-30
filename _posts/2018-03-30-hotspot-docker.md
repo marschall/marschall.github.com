@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  HotSpot Ergonomics and Docker
-published: false
 ---
 
 When no maximum heap size is specified using `-Xmx` the Java HotSpot Virtual Machine uses (ergonomics)[https://docs.oracle.com/javase/9/gctuning/ergonomics.htm#JSGCT-GUID-DA88B6A6-AF89-4423-95A6-BBCBD9FAE781] to set the maximum heap size.  In partice this means one quarter of the physical memory. On Java 8 per default cgroups memory limits are ignored. We can observe this using
