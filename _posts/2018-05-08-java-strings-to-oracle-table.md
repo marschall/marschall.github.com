@@ -47,6 +47,15 @@ sqlldr SCOTT/TIGER@ORCL control=strings.ctl rows=100000 errors=2000000
 
 You should check the error log for the rejected strings.
 
+You can then run queries like the following.
+
+```sql
+SELECT s.string_value, sum(s.retained_size), count(1)
+FROM dump_string s
+GROUP BY s.string_value
+ORDER BY sum(s.retained_size) DESC;
+```
+
 Once you have identified intersting strings you can find them again in MAT using the following OQL query.
 
 ```
