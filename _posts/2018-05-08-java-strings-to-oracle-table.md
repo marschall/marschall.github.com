@@ -3,25 +3,25 @@ layout: post
 title:  Loading Java Strings into an Oracle Table
 ---
 
-Sometimes when analyzing Java heap dumps it can be helpful to have them in a relational database to have SQL available for analysis.
+Sometimes when analyzing Java heap dumps it can be helpful to have them in a relational database so that you have SQL available for analysis.
 
-All strings from a heap dump can be extracted with [Eclipse MAT](https://www.eclipse.org/mat/) using the following [OQL](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html) query.
+All strings from a heap dump can be [extracted](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Ftasks%2Fqueryingheapobjects.html) with [Eclipse MAT](https://www.eclipse.org/mat/) using the following [OQL](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html) query.
 
 ```
 SELECT toString(s), s.@retainedHeapSize
 FROM java.lang.String s
 ```
 
-The result can be exported into a CSV called `strings.csv`.
+The result can be exported to a CSV called `strings.csv`.
 
-If you're using [string deduplication](http://openjdk.java.net/jeps/192) it may be worthwhile to also extract the address of of the backing character array.
+If you are using [string deduplication](http://openjdk.java.net/jeps/192) it may be worthwhile to also extract the address of of the backing character array.
 
 ```
 SELECT toString(s), s.@retainedHeapSize, s.value.@objectAddress
 FROM java.lang.String s
 ```
 
-We need to create a table to hold the strings. We use `VARCHAR2` instead of `CLOB` so that we can use `GROUP BY` expressions. Unfortunately that means we can not analyse strings that are larger than 4000 bytes in the database encoding. 
+We need to create a table where we store the strings. We use the `VARCHAR2` data type instead of `CLOB` so that we can use `GROUP BY` expressions. Unfortunately that means we can not analyse strings that are larger than 4000 bytes in the database encoding. 
 
 ```sql
 CRETE TABLE dump_string (
@@ -47,7 +47,7 @@ sqlldr SCOTT/TIGER@ORCL control=strings.ctl rows=100000 errors=2000000
 
 You should check the error log for the rejected strings.
 
-Once have identified several intersting strings you can find them again in MAT using the following OQL query.
+Once you have identified intersting strings you can find them again in MAT using the following OQL query.
 
 ```
 SELECT *
