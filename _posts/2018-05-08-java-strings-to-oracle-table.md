@@ -3,7 +3,7 @@ layout: post
 title:  Loading Java Strings into an Oracle Table
 ---
 
-Sometimes when analyzing Java heap dumps it can be helpful to have them in a relational database so that you have SQL available for analysis.
+Sometimes when analyzing Java heap dumps it can be helpful to have all the the strings in a Java application in a relational database so that you have SQL available for analysis.
 
 All strings from a heap dump can be [extracted](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Ftasks%2Fqueryingheapobjects.html) with [Eclipse MAT](https://www.eclipse.org/mat/) using the following [OQL](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html) query.
 
