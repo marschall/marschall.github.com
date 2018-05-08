@@ -1,20 +1,27 @@
 ---
 layout: post
 title:  Loading Java Strings into an Oracle Table
-published: false
 ---
+
+Sometimes when analyzing Java heap dumps it can be helpful to have them in a relational database to have SQL available for analysis.
+
+All strings from a heap dump can be extracted with [Eclipse MAT](https://www.eclipse.org/mat/) using the following [OQL](https://help.eclipse.org/neon/index.jsp?topic=%2Forg.eclipse.mat.ui.help%2Freference%2Foqlsyntax.html) query.
 
 ```
 SELECT toString(s), s.@retainedHeapSize
 FROM java.lang.String s
 ```
 
-[string deduplication](http://openjdk.java.net/jeps/192)
+The result can be exported into a CSV called `strings.csv`.
+
+If you're using [string deduplication](http://openjdk.java.net/jeps/192) it may be worthwhile to also extract the address of of the backing character array.
 
 ```
 SELECT toString(s), s.@retainedHeapSize, s.value.@objectAddress
 FROM java.lang.String s
 ```
+
+We need to create a table to hold the strings. We use `VARCHAR2` instead of `CLOB` so that we can use `GROUP BY` expressions. Unfortunately that means we can not analyse strings that are larger than 4000 bytes in the database encoding. 
 
 ```sql
 CRETE TABLE dump_string (
@@ -22,6 +29,8 @@ CRETE TABLE dump_string (
   retained_size NUMBER(9)
 );
 ```
+
+We use [SQL*Loader](https://docs.oracle.com/en/database/oracle/oracle-database/18/sutil/oracle-sql-loader.html) to load the file into the database table. For that a control file has to be created, we name ours `strings.ctl`.
 
 ```
 LOAD DATA
@@ -33,7 +42,16 @@ FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 ```
 
 ```
-sqlldr SCOTT/TIGER@DCBO20 control=filein.ctl rows=100000 errors=2000000
+sqlldr SCOTT/TIGER@ORCL control=strings.ctl rows=100000 errors=2000000
 ```
 
+You should check the error log for the rejected strings.
+
+Once have identified several intersting strings you can find them again in MAT using the following OQL query.
+
+```
+SELECT *
+FROM java.lang.String s
+WHERE toString(s) = "interesting value"
+```
 
