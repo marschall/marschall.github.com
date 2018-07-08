@@ -9,19 +9,19 @@ JDBC does not directly support inlists meaning when you have a query like this
 ```sql
 SELECT val
 FROM inlist_test_table 
-WHERE id IN(?)
+WHERE id IN (?)
 ```
 
-you can pass only one value to the `PreparedStatement` there is no option to pass multiple values with either a `Collection` or a Java array. Meaning if you want to pass two values you have to rewrite the query to
+you can pass only one value to the `PreparedStatement`. There is no option to pass multiple values as either a `Collection` or a Java array. Meaning if you want to pass two values you have to rewrite the query to
 
 ```sql
 SELECT val
 FROM inlist_test_table 
-WHERE id IN(?, ?)
+WHERE id IN (?, ?)
 ```
-and so forth. This is very inconvenient. Some people use `NamedParameterJdbcTemplate` from Spring JDBC. However requires parsing and rewriting the query every time the query is executed with a different number of elements in the inlist. In addition it makes the cursor cache on the database server less effective and also makes an potential statement caches on the client side less effective. Both of these together can result in additional parsing overhead on the database server side.
+and so forth. This is very inconvenient. It also not very efficient for server side statement caches. This can result in additional parsing overhead on the database server side. Some people use [NamedParameterJdbcTemplate](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/namedparam/NamedParameterJdbcTemplate.html) from Spring JDBC. However `NamedParameterJdbcTemplate` requires parsing and rewriting the query every time the query is executed with a different number of elements in the inlist.
 
-However there is an easy solution using SQL arrays. The query can be rewritten to
+There is however an easy solution using SQL arrays. The query can be rewritten to
 
 ```sql
 SELECT val
@@ -32,10 +32,11 @@ WHERE id = ANY(?)
 and then a `java.sql.Array` can be passed to the `PreparedStatement`. This works with the following databases
 
 * H2
+* HSQLDB
 * PostgreS
-* Oracle 18c
+* Oracle
 
-With earlier versions of Oracle a slightly different syntax has to be used
+With Oracle 12c and earlier versions a slightly different syntax has to be used
 
 
 ```sql
@@ -44,4 +45,17 @@ FROM inlist_test_table
 WHERE id = ANY(SELECT column_value FROM TABLE(?))
 ```
 
+Also HSQLDB requires a different syntax also there are some constraints on datatypes see [this stackoverflow discussion](https://stackoverflow.com/questions/50665451/hsqldb-any-array-function-not-working/50684110).
+
+
+```sql
+SELECT val
+FROM inlist_test_table 
+WHERE id IN ( UNNEST(?) )
+```
+
 There is an additional caveat with Oracle in that Oracle does not support anonymous arrays and instead custom array types have to be created.
+
+* [SQL IN Predicate: With IN List or With Array? Which is Faster?](https://blog.jooq.org/2017/03/30/sql-in-predicate-with-in-list-or-with-array-which-is-faster/)
+* [When Using Bind Variables is not Enough: Dynamic IN Lists](https://blog.jooq.org/2018/04/13/when-using-bind-variables-is-not-enough-dynamic-in-lists/)
+* [IN-list Padding](https://www.jooq.org/doc/latest/manual/sql-building/dsl-context/custom-settings/settings-in-list-padding/)
