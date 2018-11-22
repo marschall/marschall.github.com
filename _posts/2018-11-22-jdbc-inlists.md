@@ -1,7 +1,6 @@
 ---
 layout: post
 title:  Using JDBC Inlists with Arrays
-published: false
 ---
 
 JDBC does not directly support inlists meaning when you have a query like this
@@ -12,7 +11,7 @@ FROM inlist_test_table
 WHERE id IN (?)
 ```
 
-you can pass only one value to the `PreparedStatement`. There is no option to pass multiple values as either a `Collection` or a Java array. Meaning if you want to pass two values you have to rewrite the query to
+you can pass only one value to the `PreparedStatement`. There is no option to pass multiple values neither as `Collection` nor as Java array. Meaning if you want to pass two values you have to rewrite the query to
 
 ```sql
 SELECT val
@@ -45,7 +44,7 @@ FROM inlist_test_table
 WHERE id = ANY(SELECT column_value FROM TABLE(?))
 ```
 
-Also HSQLDB requires a different syntax also there are some constraints on datatypes see [this stackoverflow discussion](https://stackoverflow.com/questions/50665451/hsqldb-any-array-function-not-working/50684110).
+Also HSQLDB requires a different syntax and there are some constraints on datatypes. See [this stackoverflow discussion](https://stackoverflow.com/questions/50665451/hsqldb-any-array-function-not-working/50684110) for more information.
 
 
 ```sql
@@ -54,8 +53,9 @@ FROM inlist_test_table
 WHERE id IN ( UNNEST(?) )
 ```
 
-There is an additional caveat with Oracle in that Oracle does not support anonymous arrays and instead custom array types have to be created.
+There is an additional caveat with Oracle in that Oracle does not support anonymous arrays, instead custom array types have to be created. Additonally the Oracle JDBC driver only supports creating JDBC arrays using proprietary APIs. If you are using Spring `JdbcTemplate` then the `SqlOracleArrayValue` class from [ferstl/spring-jdbc-oracle](https://github.com/ferstl/spring-jdbc-oracle/) does the binding for you.
 
 * [SQL IN Predicate: With IN List or With Array? Which is Faster?](https://blog.jooq.org/2017/03/30/sql-in-predicate-with-in-list-or-with-array-which-is-faster/)
 * [When Using Bind Variables is not Enough: Dynamic IN Lists](https://blog.jooq.org/2018/04/13/when-using-bind-variables-is-not-enough-dynamic-in-lists/)
 * [IN-list Padding](https://www.jooq.org/doc/latest/manual/sql-building/dsl-context/custom-settings/settings-in-list-padding/)
+
