@@ -50,11 +50,17 @@ Also HSQLDB requires a different syntax and there are some constraints on dataty
 ```sql
 SELECT val
 FROM inlist_test_table 
-WHERE id IN ( UNNEST(?) )
+WHERE id IN(UNNEST(?))
 ```
 
-There is an additional caveat with Oracle in that Oracle does not support anonymous arrays, instead custom array types have to be created. Additionally the Oracle JDBC driver only supports creating JDBC arrays using proprietary APIs. If you are using Spring `JdbcTemplate` then the `SqlOracleArrayValue` class from [ferstl/spring-jdbc-oracle](https://github.com/ferstl/spring-jdbc-oracle/) does the binding for you.
+There is an additional caveat with Oracle in that Oracle does not support anonymous arrays, instead custom array types have to be created. Additionally the Oracle JDBC driver only supports creating JDBC arrays using proprietary APIs. If you are using Spring `JdbcTemplate` then the [SqlOracleArrayValue](https://static.javadoc.io/com.github.ferstl/spring-jdbc-oracle/2.0.0/com/github/ferstl/spring/jdbc/oracle/SqlOracleArrayValue.html) class from [ferstl/spring-jdbc-oracle](https://github.com/ferstl/spring-jdbc-oracle/) does the binding for you and can be used as a bind parameter.
 
+
+```java
+jdbcOperations.queryForObject(SQL,
+  new SqlOracleArrayValue("MYARRAYTYPE", array),
+  Integer.class);
+```
 
 Further Reading
 ---------------
