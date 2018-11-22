@@ -23,5 +23,5 @@ To use this from WildFly you have to configure the datasoruces subsystem accordi
        </validation>
     </datasource>
 </subsystem>
-
+```
 
