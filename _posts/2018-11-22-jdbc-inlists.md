@@ -53,7 +53,7 @@ FROM inlist_test_table
 WHERE id IN ( UNNEST(?) )
 ```
 
-There is an additional caveat with Oracle in that Oracle does not support anonymous arrays, instead custom array types have to be created. Additonally the Oracle JDBC driver only supports creating JDBC arrays using proprietary APIs. If you are using Spring `JdbcTemplate` then the `SqlOracleArrayValue` class from [ferstl/spring-jdbc-oracle](https://github.com/ferstl/spring-jdbc-oracle/) does the binding for you.
+There is an additional caveat with Oracle in that Oracle does not support anonymous arrays, instead custom array types have to be created. Additionally the Oracle JDBC driver only supports creating JDBC arrays using proprietary APIs. If you are using Spring `JdbcTemplate` then the `SqlOracleArrayValue` class from [ferstl/spring-jdbc-oracle](https://github.com/ferstl/spring-jdbc-oracle/) does the binding for you.
 
 
 Further Reading
