@@ -7,7 +7,7 @@ Besides the truststore shipped with the JDK in `cacerts` Java allows using the n
 
 On macOS the tuststore of type `KeychainStore` is the [macOS Keychain](https://en.wikipedia.org/wiki/Keychain_(software).
 
-On Windows the tustore of type `Windows-MY` is the truststore of the current user and `Windows-ROOT` is the truststore of the current computer.
+On Windows the tuststore of type `Windows-MY` is the truststore of the current user and `Windows-ROOT` is the truststore of the current computer.
 
 Java can be switched to to use a different truststore using `-Djavax.net.ssl.trustStoreType=xxx`.
 
