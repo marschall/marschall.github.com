@@ -24,7 +24,7 @@ FROM java.lang.String s
 We need to create a table where we store the strings. We use the `VARCHAR2` data type instead of `CLOB` so that we can use `GROUP BY` expressions. Unfortunately that means we can not analyse strings that are larger than 4000 bytes in the database encoding. 
 
 ```sql
-CRETE TABLE dump_string (
+CREATE TABLE dump_string (
   string_value VARCHAR2(4000),
   retained_size NUMBER(9)
 );
