@@ -3,7 +3,7 @@ layout: post
 title: Getting Oracle JDBC Drivers through Maven
 ---
 
-Oracles [JDBC drivers](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) are infamous for not being in the [Maven Central Repository](https://maven.apache.org/repository/). What is less known is that there is an [Oracle Maven Repository](https://maven.oracle.com/) or how to use the Oracle Maven Repository. This article describes how to do use the Oracle Maven Repository to get the Oracle JDBC drivers for a developer setup. In a corporate setup you would use a repository manager like Nexus or Artifactory.
+Oracles [JDBC drivers](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) are infamous for not being in the [Maven Central Repository](https://maven.apache.org/repository/). What is less known is that there is an [Oracle Maven Repository](https://maven.oracle.com/) or how to use this Maven repository. This article describes how to do use the Oracle Maven Repository to get the Oracle JDBC drivers for a developer setup. In a corporate setup we would use a repository manager like Nexus or Artifactory.
 
 The first thing we need is an [Oracle OTN account](https://www.oracle.com/technical-resources/), we will need this to download most Oracle software. We are going to use [Maven Password Encryption](https://maven.apache.org/guides/mini/guide-encryption.html) to store our OTN password. This isn't strictly necessary and the setup is simpler without it but it is good practice.
 
