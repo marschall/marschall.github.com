@@ -30,7 +30,7 @@ kill -11 <pid>
 # Problematic frame:
 # C  [libpthread.so.0+0xacd5]  __GI___pthread_timedjoin_ex+0x225
 #
-# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P" (or dumping to /opt/tomcat/core.3875)
+# Core dump will be written. Default location: /var/crash/core/%e_%u_%g_%t_%s_%p
 #
 # An error report file with more information is saved as:
 # /opt/tomcat/hs_err_pid3875.log
@@ -40,7 +40,7 @@ kill -11 <pid>
 #
 ```
 
-If everything is successful two files should have been created. A `hs_err_pid.log` in the working directory of the crashed Java process and a core sump file. Make sure these are on persistent volumes.
+If everything is successful two files should have been created. A `hs_err_pid.log` in the working directory of the crashed Java process and a core sump file. Make sure these are on persistent volumes. Keep in mind these files contain your command line arguments and all the data loaded into the application, treat them accordingly.
 
 Once a crash happened make sure to move the core dump partition to make sure there is enough space left for the next crash. Often a next step is to create a back trace using [GDB](https://www.gnu.org/software/gdb/)
 
