@@ -13,10 +13,31 @@ unlimited
 
 A core dump will be larger than your heap, at least the size of the [RSS](https://en.wikipedia.org/wiki/Resident_set_size) so make sure you have enough space left of the core dump partition. As a rule of thumb, the core dump partition should a least be the size of the physical memory plus swap.
 
-As with everything else it worth testing this to make sure everything works. A simple way to crash a Java program is to send [SIGSEGV](https://en.wikipedia.org/wiki/Segmentation_fault) to a Java process.. `SIGSEGV` has the value of 11, we can use `kill` to send this signal.
+As with everything else it worth testing this to make sure everything works. A simple way to crash a Java program is to send [SIGSEGV](https://en.wikipedia.org/wiki/Segmentation_fault) to a Java process. `SIGSEGV` has the value of 11, we can use `kill` to send this signal.
 
 ```
 kill -11 <pid>
+```
+
+```
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007feec256acd5 (sent by kill), pid=3875, tid=3875
+#
+# JRE version: JRE version
+# Java VM: Java VM
+# Problematic frame:
+# C  [libpthread.so.0+0xacd5]  __GI___pthread_timedjoin_ex+0x225
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/share/apport/apport %p %s %c %d %P" (or dumping to /opt/tomcat/core.3875)
+#
+# An error report file with more information is saved as:
+# /opt/tomcat/hs_err_pid3875.log
+#
+# If you would like to submit a bug report, please visit:
+#   http://www.vendor.com/support/
+#
 ```
 
 If everything is successful two files should have been created. A `hs_err_pid.log` in the working directory of the crashed Java process and a core sump file. Make sure these are on persistent volumes.
