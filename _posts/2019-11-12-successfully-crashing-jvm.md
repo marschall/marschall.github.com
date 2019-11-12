@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Successfully Crashing a JVM in Production
-published: false
 ---
 
 JVMs can occasionally crash in production. To be able to debug the cause it helps to be prepared. One of the most important things is to have [core dumps](http://man7.org/linux/man-pages/man5/core.5.html) enabled. This can be done by setting or raising the core dump limit. The core dump limit can be checked with `ulimit -c`, a value of `0` means core dumps are disabled, a value of `unlimited` means there is no size limit for core dumps.
