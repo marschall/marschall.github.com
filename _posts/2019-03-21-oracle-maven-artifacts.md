@@ -99,6 +99,11 @@ And with that we can use the Oracle divers from Maven using
 </dependency>
 ```
 
+Update
+------
+
+Oracle JDBC drivers are now in [Maven Central](https://medium.com/oracledevs/oracle-jdbc-drivers-on-maven-central-64fcf724d8b) under the `com.oracle.ojdbc` groupId. 
+
 
 Further Reading
 ---------------
