@@ -42,7 +42,7 @@ kill -11 <pid>
 
 If everything is successful two files should have been created. A `hs_err_pid.log` in the working directory of the crashed Java process and a core sump file. Make sure these are on persistent volumes. Keep in mind these files contain your command line arguments and all the data loaded into the application, treat them accordingly.
 
-Once a crash happened make sure to move the core dump partition to make sure there is enough space left for the next crash. Often a next step is to create a back trace using [GDB](https://www.gnu.org/software/gdb/)
+Once a crash happened make sure to move the core dump partition to make sure there is enough space left for the next crash. Often a next step is to create a back trace using [GDB](https://www.gnu.org/software/gdb/). For this you need to have debug symbols for your JVM. How you get debug symbols depends on your JVM vendor, some of them ship them with the JDK, others offer a different package or download.
 
 ```
 gdb /path/to/java-X.Y.Z/bin/java CORE_FILE
