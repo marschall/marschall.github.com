@@ -3,7 +3,7 @@ layout: post
 title: TLS Debugging with JFR
 ---
 
-Sometimes when debugging SSL/TLS connection issues in Java [JSSE debug logging](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-31B7E142-B874-46E9-8DD0-4E18EC0EB2CF) may not be available because it requires a JVM restart and a a change to JVM arguments. In such cases [Java Flight Recorder (JFR) Security Events](https://bugs.openjdk.java.net/browse/JDK-8148188) may be used. JFR Security Events are Java available in Java 12+, 11.0.5+ and 8u231+. To generate JFR events you need a configuration file like this one: 
+Sometimes when debugging SSL/TLS connection issues in Java [JSSE debug logging](https://docs.oracle.com/en/java/javase/11/security/java-secure-socket-extension-jsse-reference-guide.html#GUID-31B7E142-B874-46E9-8DD0-4E18EC0EB2CF) may not be available because it requires a JVM restart and a change to JVM arguments. In such cases [Java Flight Recorder (JFR) Security Events](https://bugs.openjdk.java.net/browse/JDK-8148188) may be used. JFR Security Events are Java available in Java 12+, 11.0.5+ and 8u231+. To generate JFR events you need a configuration file like this one: 
 
 
 ```xml
