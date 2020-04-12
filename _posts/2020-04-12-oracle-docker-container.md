@@ -34,6 +34,8 @@ ALTER USER test_user QUOTA 100M ON USERS;
 And finally we create the objects with the file `03_objects.sql`
 
 ```sql
+ALTER SESSION SET CONTAINER = ORCLPDB1;
+
 CREATE TABLE test_table (
   id     NUMBER(5) NOT NULL PRIMARY KEY
 );
