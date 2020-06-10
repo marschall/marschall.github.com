@@ -31,7 +31,7 @@ GRANT RESOURCE TO test_user CONTAINER=CURRENT;
 ALTER USER test_user QUOTA 100M ON USERS;
 ```
 
-And finally we create the objects with the file `03_objects.sql`
+And finally we create the objects with the file `sql/03_objects.sql`
 
 ```sql
 ALTER SESSION SET CONTAINER = ORCLPDB1;
@@ -58,5 +58,5 @@ docker run --name test-project \
 
 Replace `test-project` with your chosen container name and `19.3.0-se2` with your chosen Oracle version.
 
-Our JDBC URL will be ´jdbc:oracle:thin:@localhost:1521/ORCLPDB1?oracle.net.disableOob=true´. See [ORA-12637: Packet receive failed](https://github.com/oracle/docker-images/blob/master/OracleDatabase/SingleInstance/FAQ.md#ora-12637-packet-receive-failed) for details about the connection property.
+Our JDBC URL will be `jdbc:oracle:thin:@localhost:1521/ORCLPDB1?oracle.net.disableOob=true`. See [ORA-12637: Packet receive failed](https://github.com/oracle/docker-images/blob/master/OracleDatabase/SingleInstance/FAQ.md#ora-12637-packet-receive-failed) for details about the connection property.
 
