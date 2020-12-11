@@ -14,6 +14,6 @@ The following JDK 11 builds have the [Shenandoah GC](https://wiki.openjdk.java.n
 | [Azul Zulu CE](https://www.azul.com/downloads/zulu-community/)                                   | yes |
 | [BellSoft Liberica JDK](https://bell-sw.com/pages/downloads/)                                    | no  |
 | [OpenJDK Project Builds](https://adoptopenjdk.net/upstream.html)                                 | no  |
-| [RedHat OpenJDK Builds](https://developers.redhat.com/products/openjdk/download)                 | ??? |
+| [RedHat OpenJDK Builds](https://developers.redhat.com/products/openjdk/download)                 | no  |
 | [SapMachine](https://sap.github.io/SapMachine/)                                                  | no  |
 
