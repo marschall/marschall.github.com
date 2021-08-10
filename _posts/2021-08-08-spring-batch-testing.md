@@ -15,9 +15,50 @@ In the Spring Test Context Framework test in general roll back database transact
 
 This means using a `ResourceLessTransactionManager` just for the map based DAO implementations and a `DataSourceTransactionManager` for the application code will not work. It also means that using an in-memory database for the Spring Batch JDBC DAOs will force the application code to also run on this in-memory database. And even then a rollback of the database transaction will still not be possible.
 
-The map based DAO implementations are really just usable in cases where the application code preforms no JDBC data access. In these cases they can be used together with a `ResourceLessTransactionManager`. Note that even in these cases a `DataSource` bean still has to be present as `JobRepositoryTestUtils` requires one.
+The map based DAO implementations are really just usable in cases where the application code performs no JDBC data access. In these cases they can be used together with a `ResourceLessTransactionManager`. Note that even in these cases a `DataSource` bean still has to be present as `JobRepositoryTestUtils` requires one.
+
+Mitigating these issues requires replacing `AbstractBatchConfiguration` with a different configuration that sets up the `StepBuilderFactory` with a `ResourcelessTransactionManager`. This prevents Spring Batch from committing data and allows the Spring Test Context Framework to roll back the transaction.
+
+To mitigate all these issues we have created the [Spring Batch In-Memory](https://github.com/marschall/spring-batch-inmemory) project. It comes with:
+
+- In-memory implementations of `JobRepository` and `JobExplorer` that are not deprecated.
+- A replactement for `AbstractBatchConfiguration` that sets up a `StepBuilderFactory` with a `ResourcelessTransactionManager`.
+- A null implementation of `DataSource` that allows creating a `JobRepositoryTestUtils`.
 
 
+```xml
+<dependency>
+  <groupId>com.github.marschall</groupId>
+  <artifactId>spring-batch-inmemory</artifactId>
+  <version>0.1.0</version>
+</dependency>
+```
+
+```java
+@Transactional // only needed of you have JDBC DML operations that you want to rollback
+@Rollback // only needed of you have JDBC DML operations that you want to rollback
+@SpringBatchTest
+class MySpringBatchIntegrationTests {
+
+  @Configuration
+  @Import({
+    MyJobConfiguration.class, // the configuration class of the Spring Batch job or step you want to test
+    InMemoryBatchConfiguration.class
+  })
+  static class ContextConfiguration {
+
+    @Bean
+    public DataSource dataSource() {
+      // if your job requires data access through JDBC replace this with the actual DataSource
+      return new NullDataSource();
+    }
+
+    // if you want to used to roll back JDBC DML operations you also need to define an appropriate transaction manager, eg. DataSourceTransactionManager
+
+  }
+
+}
+```
 
 - Completely replace `AbstractBatchConfiguration` with a different Configuration that sets up `StepBuilderFactory`
 - `SimpleJobRepository` and `SimpleJobExplorer` with a `ResourcelessTransactionManager` 
