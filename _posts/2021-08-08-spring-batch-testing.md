@@ -71,6 +71,10 @@ class MySpringBatchIntegrationTests {
 
 Oracle commits on `Connection#close()`
 
+https://github.com/spring-projects/spring-boot/issues/7259
+https://github.com/spring-projects/spring-batch/issues/816
+https://github.com/spring-projects/spring-batch/issues/3942
+
 TODO ResourceLessTransactionManager for everything? No rollback (lingering transactions)? Oracle commits on `Connection#close()`
 
 TODO InMemoryBatchConfigurerTests -> does StepBuilderFactory get DataSourceTransactionManager?
