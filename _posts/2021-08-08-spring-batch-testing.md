@@ -6,7 +6,7 @@ published: false
 
 The support of Spring Batch for integration testing may be disappointing compared to other Spring projects like Web MVC. In this post we explore why this is and what can be done about it.
 
-An integration test in Spring Batch creates Spring application context to launch a step or job. Spring Batch has support for this in the form of the `@SpringBatchTest` annotation and the `JobLauncherTestUtils` and `JobRepositoryTestUtils` utility classes. In addition there are the map based DAO implementations (`MapJobInstanceDao`, `MapJobExecutionDao`, `MapStepExecutionDao` and `MapExecutionContextDao`) designed to help creating tests that do not write to the database. However these have been deprecated with the intent to remove them in Spring Batch 5. The recommendation is to use an embedded in-memory database instead.
+An integration test in Spring Batch creates Spring application context to launch a step or job. Spring Batch has support for this in the form of the `@SpringBatchTest` annotation and the `JobLauncherTestUtils` and `JobRepositoryTestUtils` utility classes. In addition there are the map based DAO implementations (`MapJobInstanceDao`, `MapJobExecutionDao`, `MapStepExecutionDao` and `MapExecutionContextDao`) designed to help creating tests that do not write to the database. However these have been [deprecated](https://github.com/spring-projects/spring-batch/issues/3780) with the intent to remove them in Spring Batch 5. The recommendation is to use an embedded in-memory database instead.
 
 In the Spring Test Context Framework test in general roll back database transactions. This is often preferrable as no side effects of test execution remain on the database and the test developer does not have to write clean up code. However due to the design of `AbstractBatchConfiguration` this is hard to achive in Spring Batch.
 
@@ -15,7 +15,7 @@ In the Spring Test Context Framework test in general roll back database transact
 
 This means using a `ResourceLessTransactionManager` just for the map based DAO implementations and a `DataSourceTransactionManager` for the application code will not work. It also means that using an in-memory database for the Spring Batch JDBC DAOs will force the application code to also run on this in-memory database. And even then a rollback of the database transaction will still not be possible.
 
-The map based DAO implementations are really just usable in cases where the application code performs no JDBC data access. In these cases they can be used together with a `ResourceLessTransactionManager`. Note that even in these cases a `DataSource` bean still has to be present as `JobRepositoryTestUtils` requires one.
+The map based DAO implementations are really just usable in cases where the application code performs no JDBC data access. In these cases they can be used together with a `ResourceLessTransactionManager`. Note that even in these cases a `DataSource` bean still has to be present as `JobRepositoryTestUtils` requires one, see [#3767](https://github.com/spring-projects/spring-batch/issues/3767).
 
 Mitigating these issues requires replacing `AbstractBatchConfiguration` with a different configuration that sets up the `StepBuilderFactory` with a `ResourcelessTransactionManager`. This prevents Spring Batch from committing data and allows the Spring Test Context Framework to roll back the transaction.
 
@@ -65,6 +65,7 @@ class MySpringBatchIntegrationTests {
 - uses a different `DataSource` and `DataSourceTransactionManager`
 
 `JobRepositoryTestUtils#removeJobExecutions()`
+`JobLauncherTestUtils#getUniqueJobParameters()` `JobLauncherTestUtils.getUniqueJobParametersBuilder()`
 
 
 `JobRepositoryTestUtils` requires a `DataSource` bean to be present.
