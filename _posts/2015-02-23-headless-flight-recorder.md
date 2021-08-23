@@ -9,6 +9,8 @@ This is more a documentation for myself on how to run [Flight Recorder](http://w
 -XX:+DebugNonSafepoints \
 -XX:StartFlightRecording:duration=120s,filename=recording.jfr,settings=settings.jfc</code></pre>
 
+If you want to use the built in profiling template then use `settings=profile`.
+
 Sources
 -------
 
