@@ -11,14 +11,14 @@ FROM inlist_test_table
 WHERE id IN (?)
 ```
 
-you can pass only one value to the `PreparedStatement`. There is no option to pass multiple values neither as `Collection` nor as Java array. Meaning if you want to pass two values you have to rewrite the query to
+you can pass only one scalar value to the `PreparedStatement`. There is no option to pass multiple values neither as `Collection` nor as Java array. Meaning if you want to pass two values you have to rewrite the query to
 
 ```sql
 SELECT val
 FROM inlist_test_table 
 WHERE id IN (?, ?)
 ```
-and so forth. This is very inconvenient. It also not very efficient for server side statement caches. This can result in additional parsing overhead on the database server side. Some people use [NamedParameterJdbcTemplate](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/namedparam/NamedParameterJdbcTemplate.html) from Spring JDBC. However `NamedParameterJdbcTemplate` requires parsing and rewriting the query every time the query is executed with a different number of elements in the inlist.
+and so forth. This is very inconvenient. It also not very efficient for server side statement caches. This can result in additional parsing overhead on the database server side. Some people use [NamedParameterJdbcTemplate](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/jdbc/core/namedparam/NamedParameterJdbcTemplate.html) from Spring JDBC. However `NamedParameterJdbcTemplate` requires parsing and rewriting the query every time the query is executed with a different number of elements in the inlist. Additionally Oracle limits the number of bind values in an inlist to 1000 (ORA-01795).
 
 There is however an easy solution using SQL arrays. The query can be rewritten to
 
@@ -35,7 +35,7 @@ and then a `java.sql.Array` can be passed to the `PreparedStatement`. This works
 * PostgreS
 * Oracle
 
-With Oracle 12c and earlier versions a slightly different syntax has to be used
+With Oracle a slightly different syntax has to be used
 
 
 ```sql
