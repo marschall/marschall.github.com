@@ -20,8 +20,16 @@ EqualsBuilder.append(Object,Object) is too big to be inlined, which prevents who
 </ul>
 <h3>JDK</h3>
 <ul>
-  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8004789">JDK-8004789</a> (zipfs) zip provider doesn't work correctly with file systems providers rather than the default (<a href="http://mail.openjdk.java.net/pipermail/nio-dev/2012-December/002060.html">discussion</a>)</li>
-  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8230058">JDK-8230058</a> Replace exception from sun.rmi.runtime.Log#getSource() with StackWalker</li>
+  <li><a href="https://bugs.openjdk.java.net/browse/JDK-4926314">JDK-4926314</a> &raquo; Optimize Reader.read(CharBuffer) (<a href="https://github.com/openjdk/jdk/pull/1915">pull request</a>)</li>
+  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8004789">JDK-8004789</a> &raquo; (zipfs) zip provider doesn't work correctly with file systems providers rather than the default (<a href="http://mail.openjdk.java.net/pipermail/nio-dev/2012-December/002060.html">discussion</a>)</li>
+  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8138732">JDK-8138732</a> &raquo; Rename @HotSpotIntrinsicCandidate to @IntrinsicCandidate and move it to the jdk.internal.vm.annotation package (<a href="https://github.com/openjdk/jdk/pull/45">pull request</a>)</li>
+  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8230058">JDK-8230058</a> &raquo; Replace exception from sun.rmi.runtime.Log#getSource() with StackWalker</li>
+  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8252530">JDK-8252530</a> &raquo; Fix inconsistencies in hotspot whitebox (<a href="https://github.com/openjdk/jdk/pull/3924">pull request</a>)</li>
+  <li><a href="https://bugs.openjdk.java.net/browse/JDK-8266320">JDK-8266320</a> &raquo; (bf) ReadOnlyBufferException in heap buffer put(String,int,int) should not be conditional (<a href="https://github.com/openjdk/jdk/pull/3809">pull request</a>)</li>
+</ul>
+<h3>GraalVM</h3>
+<ul>
+  <li><a href="https://github.com/oracle/graal/pull/2846">#2846</a> &raquo; Rename HotSpotIntrinsicCandidate to IntrinsicCandidate</li>
 </ul>
 <h3>JUnit 4</h3>
 <ul>
@@ -75,6 +83,11 @@ https://bz.apache.org/bugzilla/show_bug.cgi?id=57809
   <li><a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=281002">Bug 281002</a> &raquo; retrieve Context should only be available for attachments that are contexts</li>
 </ul>
 
+<h3>Jackson Core</h3>
+<ul>
+  <li><a href="https://github.com/FasterXML/jackson-core/pull/798">#798</a> &raquo; Avoid copy when parsing BigDecimal</li>
+</ul>
+
 <h3>Spring</h3>
 <ul>
   <li><a href="https://jira.springsource.org/browse/SPR-9264">SPR-9264</a> &raquo; 
@@ -103,6 +116,10 @@ Avoid unnecessary char[] allocation in NamedParameterUtils (<a href="https://git
   <li><a href="https://github.com/spring-projects/spring-framework/pull/525">Clean up spring-tx tests warnings</a></li>
   <li><a href="https://github.com/spring-projects/spring-framework/pull/526">Clean up spring-jms tests warnings</a></li>
   <li><a href="https://github.com/spring-projects/spring-framework/pull/527">Clean up spring-context-support tests warnings</a></li>
+  <li><a href="https://github.com/spring-projects/spring-framework/pull/25311">gh-25311</a> &raquo; Use @SafeVarargs in Jackson builder and factory</li>
+  <li><a href="https://github.com/spring-projects/spring-framework/pull/25571">gh-25571</a> &raquo; Declare MessagePostProcessor as a @FunctionalInterface</li>
+  <li><a href="https://github.com/spring-projects/spring-framework/pull/25852">gh-25852</a> &raquo; Add Dependencies Manifest Entry to spring-core</li>
+  <li><a href="https://github.com/spring-projects/spring-framework/pull/27336">gh-27336</a> &raquo; Remove unused private loggers</li>
 </ul>
 <!--
 https://jira.springsource.org/browse/SPR-10412
@@ -127,6 +144,23 @@ https://jira.springsource.org/browse/SPR-11415
   <li><a href="https://jira.spring.io/browse/BATCH-2411">BATCH-2411</a> &raquo; Remove unnecessary @SuppressWarnings("unchecked") (<a href="https://github.com/spring-projects/spring-batch/pull/382">pull request</a>)</li>
   <li><a href="https://jira.spring.io/browse/BATCH-2412">BATCH-2412</a> &raquo; Add guards around debug statements (<a href="https://github.com/spring-projects/spring-batch/pull/383">pull request</a>)</li>
   <li><a href="https://jira.spring.io/browse/BATCH-2417">BATCH-2417</a> &raquo; Drop JAXP 1.3 support (<a href="https://github.com/spring-projects/spring-batch/pull/384">pull request</a>)</li>
+  <li><a href="https://jira.spring.io/browse/BATCH-2434">BATCH-2434</a> &raquo; Improve TransactionAwareBufferedWriter efficiency (<a href="https://github.com/spring-projects/spring-batch/pull/387">pull request</a>)</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3800">BATCH-3800</a> &raquo; Don't call wrapper constructors directly</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3803">BATCH-3803</a> &raquo; Fix some raw types</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3804">BATCH-3804</a> &raquo; Replace Assert.assertThat with MatcherAssert.assertThat</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3805">BATCH-3805</a> &raquo; Replace #initMocks with MockitoRule</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3868">BATCH-3868</a> &raquo; Remove double brace initialization</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3876">BATCH-3876</a> &raquo; Make countStepExecutions access batch_job_execution only once</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3908">BATCH-3908</a> &raquo; Remove Reflection from StepScopeTestExecutionListener</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3909">BATCH-3909</a> &raquo; Use default methods in TestExecutionListener</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3986">BATCH-3986</a> &raquo; Avoid string conversion in ExecutionContextSerializer tests</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/issues/3980">BATCH-3980</a> &raquo; Consider making JobParameters#getParameters() immutable (<a href="https://github.com/spring-projects/spring-batch/pull/3988">pull request</a>)</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3997">BATCH-3997</a> &raquo; Simplify GET_LAST_STEP_EXECUTION</li>
+</ul>
+<h3>Micrometer</h3>
+<ul>
+  <li><a href="https://github.com/micrometer-metrics/micrometer/pull/3216">#3216</a> &raquo; Avoid auto-boxing in Measurement#getValue</li>
+  <li><a href="https://github.com/micrometer-metrics/micrometer/pull/3230">#3230</a> &raquo; Add primitive Suppliers to Timer and LongTaskTimer</li>
 </ul>
 <h3>WildFly Core</h3>
 <ul>
@@ -227,6 +261,10 @@ https://github.com/jboss-remoting/jboss-sasl/pull/4
 https://issues.apache.org/jira/browse/TOMEE-903
 https://issues.apache.org/jira/browse/TOMEE-913
 -->
+<h3>Infinispan</h3>
+<ul>
+  <li><a href="https://issues.redhat.com/browse/ISPN-12342">ISPN-12342</a> &raquo; Add Dependencies Manifest header to Spring artifacts (<a href="https://github.com/infinispan/infinispan/pull/8704">pull request</a>)</li>
+</ul>
 <h3>Hibernate</h3>
 <ul>
   <li><a href="https://hibernate.atlassian.net/browse/HHH-5929">HHH-5929</a> &raquo; PooledLoOptimizer in conjunction with SequenceStyleGenerator is not thread-safe (<a href="https://github.com/hibernate/hibernate-orm/pull/350">pull request</a>)</li>
@@ -260,6 +298,10 @@ https://issues.apache.org/jira/browse/TOMEE-913
   <li><a href="https://github.com/jsr107/jsr107spec/pull/291">jsr107spec-291</a> &raquo; Fix &lt; and &gt; Javadoc Warnings (<a href="https://github.com/jsr107/jsr107spec/pull/291">pull request</a>)</li>
 -->
 </ul>
+<h3>JasperReports</h3>
+<ul>
+  <li><a href="https://github.com/TIBCOSoftware/jasperreports/pull/205">#205</a> &raquo; Fix the release year of 6.17.0</li>
+</ul>
 <h3>ThreeTen backport</h3>
 <ul>
   <li><a href="https://github.com/ThreeTen/threetenbp/pull/56">#56</a> &raquo; Fix toEpochMilli overflow</li>
@@ -288,6 +330,12 @@ https://issues.apache.org/jira/browse/TOMEE-913
   <li><a href="https://github.com/pgjdbc/pgjdbc/pull/932">#932</a> &raquo; feat: improve ResultSet#getObject(int, Class)</li>
   <li><a href="https://github.com/pgjdbc/pgjdbc/pull/988">#988</a> &raquo; test: add ubenchmark for UTF-8 decoding</li>
   <li><a href="https://github.com/pgjdbc/pgjdbc/pull/1539">#1539</a> &raquo; fix: proleptic java.time support</li>
+  <li><a href="https://github.com/pgjdbc/pgjdbc/pull/2379">#2379</a> &raquo; style: fix typos in pgobject javadoc</li>
+  <li><a href="https://github.com/pgjdbc/pgjdbc/pull/2380">#2380</a> &raquo; style: import java.time types in TimestampUtils</li>
+  <li><a href="https://github.com/pgjdbc/pgjdbc/pull/2382">#2382</a> &raquo; style: import java.time types in more classes</li>
+  <li><a href="https://github.com/pgjdbc/pgjdbc/pull/2383">#2383</a> &raquo; docs: style: remove Java 8 / JDBC 4.2 checks</li>
+  <li><a href="https://github.com/pgjdbc/pgjdbc/pull/2385">#2385</a> &raquo; docs: remove Java 6 and 7 references from contributing</li>
+  <li><a href="https://github.com/pgjdbc/pgjdbc/pull/2386">#2386</a> &raquo; fix: throw SQLException for #getBoolean BIT(>1)</li>
 </ul>
 <h3>PostgreSQL JDBC driver documentation</h3>
 <ul>
@@ -367,10 +415,6 @@ https://issues.apache.org/jira/browse/TOMEE-913
 <ul>
   <li><a href="https://github.com/stripe/stripe-java/pull/75">#75</a> &raquo; Statics in Stripe must be volatile</li>
 </ul>
-<h3>PostgreSQL JDBC driver documentation</h3>
-<ul>
-  <li><a href="https://github.com/pgjdbc/www/pull/18">#18</a> &raquo; docs: Update docs to use Wrapper API</li>
-</ul>
 <h3>spring-jdbc-oracle</h3>
 <ul>
   <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/1">#1</a> &raquo; Add OracleNamedParameterJdbcTemplate</li>
@@ -388,6 +432,13 @@ https://issues.apache.org/jira/browse/TOMEE-913
   <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/17">#17</a> &raquo; Remove an unused import</li>
   <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/18">#18</a> &raquo; Switch to Official Oracle Coordinates</li>
   <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/19">#19</a> &raquo; Implement SqlOracleArrayValue#toString</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/20">#20</a> &raquo; Use Oracle drivers from Maven Central</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/21">#21</a> &raquo; Easter 2020</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/22">#22</a> &raquo; Update plugins and dependencies</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/23">#23</a> &raquo; add javadoc badge</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/24">#24</a> &raquo; Improve the Javadoc of SqlOracleArrayValue</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/26">#26</a> &raquo; Add support for UUIDs in RAW(16)</li>
+  <li><a href="https://github.com/ferstl/spring-jdbc-oracle/pull/29">#29</a> &raquo; Add RollbackSingleConnectionDataSource</li>
 </ul>
 
 <!--
@@ -422,6 +473,18 @@ https://issues.apache.org/jira/browse/TOMEE-913
 <h3>Maven Doxia</h3>
 <ul>
   <li><a href="https://issues.apache.org/jira/browse/DOXIA-558">DOXIA-558</a> &raquo; Upgrade to Commons Lang 3 (<a href="https://github.com/apache/maven-doxia/pull/3">pull request</a>)</li>
+</ul>
+<h3>Takari Maven Plugin Testing Framework</h3>
+<ul>
+  <li><a href="https://github.com/takari/takari-plugin-testing-project/pull/35">#35</a> &raquo; Convert RuntimeFactory to functional interface</li>
+  <li><a href="https://github.com/takari/takari-plugin-testing-project/pull/36">#36</a> &raquo; Access default Authenticator</li>
+  <li><a href="https://github.com/takari/takari-plugin-testing-project/pull/37">#37</a> &raquo; Update Takari parent to latest</li>
+  <li><a href="https://github.com/takari/takari-plugin-testing-project/pull/38">#38</a> &raquo; Add support for JUnit 5</li>
+  <li><a href="https://github.com/takari/takari-plugin-testing-project/pull/39">#39</a> &raquo; Update Takari plugin testing version to latest</li>
+</ul>
+<h3>io.takari.m2e.lifecycle</h3>
+<ul>
+  <li><a href="https://github.com/takari/io.takari.m2e.lifecycle/pull/11">#11</a> &raquo; Make the project buildable and installable again</li>
 </ul>
 <h3>Doxia Sitetools</h3>
 <ul>
@@ -565,6 +628,10 @@ https://issues.apache.org/jira/browse/TOMEE-913
 <ul>
   <li><a href="https://github.com/jni-rs/jni-rs/issues/158">#158</a> &raquo; Contributing documentation is out of date (<a href="https://github.com/jni-rs/jni-rs/pull/159">pull request</a>)</li>
 </ul>
+<h3>Objenesis</h3>
+<ul>
+  <li><a href="https://github.com/easymock/objenesis/pull/81">#81</a> &raquo; Add Dependencies Manifest Entry</li>
+</ul>
 <h3>Threema Gateway Java SDK</h3>
 <ul>
   <li><a href="https://github.com/simmac/threema-msgapi-sdk-java/pull/13">#13</a> &raquo; ReceiveMessageResult message is unused</li>
@@ -584,6 +651,7 @@ https://issues.apache.org/jira/browse/TOMEE-913
 <h3>JAXB</h3>
 <ul>
   <li><a href="https://github.com/gf-metro/jaxb/pull/18">#18</a> &raquo; Fix project URL</li>
+  <li><a href="https://github.com/eclipse-ee4j/jaxb-ri/pull/1465">#1465</a> &raquo; Use StackWalker API to get the caller class</li>
 </ul>
 <h3>SAAJ RI</h3>
 <ul>

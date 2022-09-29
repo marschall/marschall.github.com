@@ -5,7 +5,7 @@ title: Using Native Truststores with Java
 
 Besides the truststore shipped with the JDK in `cacerts` Java allows using the native truststore of the operating system.
 
-On macOS the tuststore of type `KeychainStore` is the [macOS Keychain](https://en.wikipedia.org/wiki/Keychain_(software).
+On macOS the tuststore of type `KeychainStore` is the [macOS Keychain](https://en.wikipedia.org/wiki/Keychain_(software)).
 
 On Windows the tuststore of type `Windows-MY` is the truststore of the current user and `Windows-ROOT` is the truststore of the current computer.
 
