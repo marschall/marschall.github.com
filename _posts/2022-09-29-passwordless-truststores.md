@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to Create Passwordless PKCS #12 Truststores with Java
+title: How to Create Passwordless PKCS 12 Truststores with Java
 ---
 
 The default truststore format for current versions of Java is [PKCS #12](https://en.wikipedia.org/wiki/PKCS_12). As PKCS #12 can also be used for keystores it often has a password.
