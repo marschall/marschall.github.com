@@ -86,6 +86,12 @@ https://bz.apache.org/bugzilla/show_bug.cgi?id=57809
 <h3>Jackson Core</h3>
 <ul>
   <li><a href="https://github.com/FasterXML/jackson-core/pull/798">#798</a> &raquo; Avoid copy when parsing BigDecimal</li>
+  <li><a href="https://github.com/FasterXML/jackson-core/pull/865">#865</a> &raquo; Optimize parsing 19 digit longs</li>
+</ul>
+
+<h3>Jackson Databind</h3>
+<ul>
+  <li><a href="https://github.com/FasterXML/jackson-databind/issues/3699">#3699</a> &raquo; Allow custom JsonNode implementations (<a href="https://github.com/FasterXML/jackson-databind/pull/3701">pull request</a>)</li>
 </ul>
 
 <h3>Spring</h3>
@@ -153,9 +159,14 @@ https://jira.springsource.org/browse/SPR-11415
   <li><a href="https://github.com/spring-projects/spring-batch/pull/3876">BATCH-3876</a> &raquo; Make countStepExecutions access batch_job_execution only once</li>
   <li><a href="https://github.com/spring-projects/spring-batch/pull/3908">BATCH-3908</a> &raquo; Remove Reflection from StepScopeTestExecutionListener</li>
   <li><a href="https://github.com/spring-projects/spring-batch/pull/3909">BATCH-3909</a> &raquo; Use default methods in TestExecutionListener</li>
-  <li><a href="https://github.com/spring-projects/spring-batch/pull/3986">BATCH-3986</a> &raquo; Avoid string conversion in ExecutionContextSerializer tests</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3979">BATCH-3979</a> &raquo; Optimize ExitStatus#addExitDescription</li>
   <li><a href="https://github.com/spring-projects/spring-batch/issues/3980">BATCH-3980</a> &raquo; Consider making JobParameters#getParameters() immutable (<a href="https://github.com/spring-projects/spring-batch/pull/3988">pull request</a>)</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3985">BATCH-3985</a> &raquo; Use ExecutionContext map constructor</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/3986">BATCH-3986</a> &raquo; Avoid string conversion in ExecutionContextSerializer tests</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/issues/3987">BATCH-3987</a> &raquo; Sorting in JdbcJobExecutionDao.GET_RUNNING_EXECUTIONS makes no sense (<a href="https://github.com/spring-projects/spring-batch/pull/3995">pull request</a>)</li>
   <li><a href="https://github.com/spring-projects/spring-batch/pull/3997">BATCH-3997</a> &raquo; Simplify GET_LAST_STEP_EXECUTION</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/4203">BATCH-4203</a> &raquo; Incorrect handling of file deletion in File-based writers</li>
+  <li><a href="https://github.com/spring-projects/spring-batch/pull/4256">BATCH-4256</a> &raquo; Remove unused method</li>
 </ul>
 <h3>Micrometer</h3>
 <ul>
@@ -275,6 +286,7 @@ https://issues.apache.org/jira/browse/TOMEE-913
   <li><a href="https://hibernate.atlassian.net/browse/HHH-12604">HHH-12604</a> &raquo; Replace EqualsHelper.equals with Objects.equals (<a href="https://github.com/hibernate/hibernate-orm/pull/2290">pull request</a>)</li>
   <li><a href="https://hibernate.atlassian.net/browse/HHH-12606">HHH-12606</a> &raquo; Container contents are never accessed (<a href="https://github.com/hibernate/hibernate-orm/pull/2292">pull request</a>)</li>
   <li><a href="https://hibernate.atlassian.net/browse/HHH-12686">HHH-12686</a> &raquo; Replace EmptyIterator with Collections.emptyIterator() (<a href="https://github.com/hibernate/hibernate-orm/pull/2347">pull request</a>)</li>
+  <li><a href="https://hibernate.atlassian.net/browse/HHH-15670">HHH-15670</a> &raquo; RequiresDialectFeature.reverse() not implemented (<a href="https://github.com/hibernate/hibernate-orm/pull/5508">pull request</a>)</li>
 </ul>
 <h3>IronJacamar</h3>
 <ul>
@@ -369,6 +381,12 @@ https://issues.apache.org/jira/browse/TOMEE-913
   <li><a href="https://github.com/h2database/h2database/pull/597">#597</a> &raquo; Support more types in getObject</li>
   <li><a href="https://github.com/h2database/h2database/pull/715">#715</a> &raquo; Better getObject error message</li>
   <li><a href="https://github.com/h2database/h2database/pull/955">#955</a> &raquo; Support getObject(?, Class) in generated keys</li>
+</ul>
+<h3>FastDoubleParser</h3>
+<ul>
+  <li><a href="https://github.com/wrandelshofer/FastDoubleParser/pull/31">#31</a> &raquo; Ensure VarHandle exact semantics</li>
+  <li><a href="https://github.com/wrandelshofer/FastDoubleParser/pull/34">#34</a> &raquo; Remove not needed TEN_POW_16 constants</li>
+  <li><a href="https://github.com/wrandelshofer/FastDoubleParser/pull/34">#35</a> &raquo; Introduce constants for parsers</li>
 </ul>
 <h3>Microsoft JDBC Driver for SQL Server</h3>
 <ul>
